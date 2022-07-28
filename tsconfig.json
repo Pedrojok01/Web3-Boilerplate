@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2021",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "removeComments": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,7 +23,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true
   },
   "include": [
     "src"
