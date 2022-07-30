@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import Blockie from "../Blockie";
 import Address from "./Address";
@@ -15,14 +15,6 @@ import { coinbaseWallet } from "../../connectors/coinbaseWallet";
 import { getAddChainParameters, getExplorer } from "../../constants/networks";
 
 const styles = {
-  display: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    paddingRight: "10px",
-    fontSize: "15px",
-    fontWeight: "600"
-  },
   account: {
     height: "42px",
     padding: "0 15px",
@@ -59,7 +51,11 @@ const styles = {
   }
 } as const;
 
-const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
+interface WantedChain {
+  chain?: number;
+}
+
+const ConnectAccount: React.FC<WantedChain> = (props) => {
   const { account, chainId } = useWeb3React();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
@@ -82,8 +78,10 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
     }
   };
 
+  const chain = props.chain !== undefined ? props.chain : chainId;
+
   return (
-    <div style={styles.display}>
+    <>
       {account === undefined ? (
         <div>
           <Button shape="round" type="primary" style={styles.button} onClick={() => setIsAuthModalOpen(true)}>
@@ -109,7 +107,7 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
                 label="MetaMask"
                 image={metamask_Logo}
                 onClick={async () => {
-                  await metaMask.activate(getAddChainParameters(desiredChain));
+                  await metaMask.activate(getAddChainParameters(chain!));
                   window.localStorage.setItem("connectorId", "injected");
                 }}
               />
@@ -127,7 +125,7 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
                 label="Coinbase Wallet"
                 image={coinbase_Logo}
                 onClick={async () => {
-                  await coinbaseWallet.activate(getAddChainParameters(desiredChain));
+                  await coinbaseWallet.activate(getAddChainParameters(chain!));
                   window.localStorage.setItem("connectorId", "injected");
                 }}
               />
@@ -207,7 +205,7 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
           </Modal>
         </>
       )}
-    </div>
+    </>
   );
 };
 

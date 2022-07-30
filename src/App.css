@@ -22,7 +22,9 @@ background-color: black !important;
 .ant-dropdown-menu-submenu-title {
   height: 42px;
   gap: 5px;
-  color: rgb(219, 219, 219) !important;
+  color: rgb(0, 0, 0) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
 }
 
 .ant-modal {

@@ -1,4 +1,3 @@
-import { useWeb3React } from "@web3-react/core";
 import { Buffer } from "buffer";
 import ConnectAccount from "./components/Account/ConnectAccount";
 import DisplayPane from "./components/DisplayPane";
@@ -7,6 +6,7 @@ import web3Boilerplate_logo from "./assets/images/web3Boilerplate_logo.png";
 import { Layout } from "antd";
 import "./App.css";
 import "antd/dist/antd.css";
+import ChainSelector from "./components/ChainSelector";
 
 const { Header, Footer } = Layout;
 
@@ -32,6 +32,14 @@ const styles = {
     padding: "0px 20px",
     paddingTop: "15px"
   },
+  headerRight: {
+    display: "flex",
+    gap: "10px",
+    alignItems: "center",
+    paddingRight: "10px",
+    fontSize: "15px",
+    fontWeight: "600"
+  },
   content: {
     display: "flex",
     justifyContent: "center",
@@ -52,16 +60,20 @@ const styles = {
 } as const;
 
 function App() {
-  const { account, isActive } = useWeb3React();
   if (!window.Buffer) window.Buffer = Buffer;
 
   return (
     <Layout style={styles.layout}>
       <Header style={styles.header}>
         <Logo />
-        <ConnectAccount desiredChain={1} />
+        <div style={styles.headerRight}>
+          <ChainSelector />
+          <ConnectAccount />
+        </div>
       </Header>
-      <div style={styles.content}>{isActive && account && <DisplayPane />}</div>
+      <div style={styles.content}>
+        <DisplayPane />
+      </div>
 
       <Footer style={styles.footer}>
         <div style={{ display: "block" }}>

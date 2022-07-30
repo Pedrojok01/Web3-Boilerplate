@@ -31,7 +31,7 @@ interface ExtendedChainInformation extends BasicChainInformation {
 function isExtendedChainInformation(
   chainInformation: BasicChainInformation | ExtendedChainInformation
 ): chainInformation is ExtendedChainInformation {
-  return !!(chainInformation as ExtendedChainInformation).nativeCurrency;
+  return !!(chainInformation as ExtendedChainInformation)?.nativeCurrency;
 }
 
 export function getAddChainParameters(chainId: number): AddEthereumChainParameter | number {

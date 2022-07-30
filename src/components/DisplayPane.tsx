@@ -1,5 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
-import { Chain } from "./Chain";
+import { Infos } from "./Infos";
+import { Status } from "./Status";
 
 const styles = {
   container: {
@@ -16,21 +17,22 @@ const styles = {
     fontSize: "30px",
     marginBottom: "10px"
   },
-  text: {
-    color: "black",
-    fontSize: "20px",
-    marginTop: "10px"
+  content: {
+    width: "70%",
+    margin: "auto",
+    fontSize: "17px"
   }
 } as const;
 
 const DisplayPane = () => {
-  const { chainId } = useWeb3React();
+  const { chainId, isActivating, error, isActive } = useWeb3React();
 
   return (
     <div style={styles.container}>
-      <div style={styles.title}>Admin Panel</div>
-      <div style={{ width: "70%", margin: "auto" }}>
-        <Chain chainId={chainId} />
+      <div style={styles.title}>Display Info</div>
+      <div style={styles.content}>
+        <Infos chainId={chainId} />
+        <Status isActivating={isActivating} error={error} isActive={isActive} />
       </div>
     </div>
   );
