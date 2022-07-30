@@ -78,11 +78,7 @@ function App() {
       <Footer style={styles.footer}>
         <div style={{ display: "block" }}>
           Please leave a ⭐️ on this{" "}
-          <a
-            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/Pedrojok01/Web3-Boilerplate" target="_blank" rel="noopener noreferrer">
             boilerplate
           </a>
           , if you like it!
