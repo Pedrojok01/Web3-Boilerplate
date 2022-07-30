@@ -1,20 +1,28 @@
 import { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import Blockie from "../Blockie";
-import Address from "../Address/Address";
+import Address from "./Address";
+import ConnectButton from "./ConnectButton";
 import { getEllipsisTxt } from "../../utils/formatters";
-import { getExplorer } from "../../utils/networks";
 import { metaMask } from "../../connectors/metaMask";
 import { walletConnect } from "../../connectors/walletConnect";
-import { getAddChainParameters } from "../../constants/chains";
-import { Button, Card, Divider, Image, Modal } from "antd";
+import { Button, Card, Divider, Modal } from "antd";
 import { SelectOutlined } from "@ant-design/icons";
 import metamask_Logo from "../../assets/svg/metamask_Logo.svg";
 import walletconnect_Logo from "../../assets/svg/walletconnect_Logo.svg";
 import coinbase_Logo from "../../assets/images/coinbase_Logo.png";
 import { coinbaseWallet } from "../../connectors/coinbaseWallet";
+import { getAddChainParameters, getExplorer } from "../../constants/networks";
 
 const styles = {
+  display: {
+    display: "flex",
+    gap: "10px",
+    alignItems: "center",
+    paddingRight: "10px",
+    fontSize: "15px",
+    fontWeight: "600"
+  },
   account: {
     height: "42px",
     padding: "0 15px",
@@ -48,18 +56,6 @@ const styles = {
     justifyContent: "center",
     fontWeight: "700",
     fontSize: "20px"
-  },
-  connectButton: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    cursor: "pointer",
-    paddingBlock: "5px",
-    marginBottom: "10px"
-  },
-  connectButtonText: {
-    fontWeight: "600",
-    paddingLeft: "30px"
   }
 } as const;
 
@@ -87,7 +83,7 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
   };
 
   return (
-    <>
+    <div style={styles.display}>
       {account === undefined ? (
         <div>
           <Button shape="round" type="primary" style={styles.button} onClick={() => setIsAuthModalOpen(true)}>
@@ -137,9 +133,13 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
               />
               <Divider />
               <div style={{ margin: "auto", fontSize: "15px", marginBottom: "15px" }}>
-                Need help connecting a wallet?{" "}
-                <a href="https://docs.aave.com/faq/troubleshooting" target="_blank" rel="noopener">
-                  Read our FAQ
+                Need help installing a wallet?{" "}
+                <a
+                  href="https://metamask.zendesk.com/hc/en-us/articles/360015489471-How-to-Install-MetaMask-Manually"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Click here
                 </a>
               </div>
 
@@ -171,8 +171,6 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
               fontSize: "17px",
               fontWeight: "500"
             }}
-            // style={{ fontSize: "16px", fontWeight: "500" }}
-            // width="400px"
           >
             Account
             <Card
@@ -209,17 +207,8 @@ const ConnectAccount = ({ desiredChain }: { desiredChain: number }) => {
           </Modal>
         </>
       )}
-    </>
+    </div>
   );
 };
-
-function ConnectButton({ label, image, onClick }: { label: string; image: string; onClick: () => void }) {
-  return (
-    <button style={styles.connectButton} key={label} onClick={onClick}>
-      <span style={styles.connectButtonText}>{label}</span>
-      <Image src={image} width={32} height={32} alt="MetaMask" />
-    </button>
-  );
-}
 
 export default ConnectAccount;

@@ -6,6 +6,10 @@
   color: #61dafb;
 }
 
+.ant-btn-primary {
+background-color: black !important;
+}
+
 .ant-dropdown {
   border-radius: 7px !important;
 }

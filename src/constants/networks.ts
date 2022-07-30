@@ -49,6 +49,18 @@ export function getAddChainParameters(chainId: number): AddEthereumChainParamete
   }
 }
 
+export const getNativeByChain = (chainId: number): string | undefined => {
+  const chainInformation = CHAINS[chainId];
+  if (isExtendedChainInformation(chainInformation)) return chainInformation.nativeCurrency.symbol;
+  return undefined;
+};
+
+export const getExplorer = (chainId: number): string[] | undefined => {
+  const chainInformation = CHAINS[chainId];
+  if (isExtendedChainInformation(chainInformation)) return chainInformation.blockExplorerUrls;
+  return undefined;
+};
+
 export const CHAINS: {
   [chainId: number]: BasicChainInformation | ExtendedChainInformation;
 } = {
@@ -113,5 +125,3 @@ export const URLS: { [chainId: number]: string[] } = Object.keys(CHAINS).reduce<
   },
   {}
 );
-
-// export const getExplorer = (chainId: number): string[] => CHAINS[chainId].blockExplorerUrls;

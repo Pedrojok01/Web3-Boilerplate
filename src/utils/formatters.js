@@ -39,14 +39,3 @@ export const tokenValue = (value, decimals) => (decimals ? value / Math.pow(10, 
  * @returns {string}
  */
 export const tokenValueTxt = (value, decimals, symbol) => `${n4.format(tokenValue(value, decimals))} ${symbol}`;
-
-export const getDate = (timestamp) => {
-  let datetime = new Date(parseInt(timestamp * 1000));
-  let date = (
-    <>
-      {datetime.getDate()}/{datetime.getMonth() + 1}/{datetime.getFullYear()} <br></br>
-      at {datetime.getHours()}:{datetime.getMinutes()}:{datetime.getSeconds()}
-    </>
-  );
-  return date;
-};

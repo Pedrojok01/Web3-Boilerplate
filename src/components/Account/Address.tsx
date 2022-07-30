@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import Blockie from "../Blockie";
 import { getEllipsisTxt } from "../../utils/formatters";
 import { Skeleton } from "antd";
 import "./identicon.css";
-import { useWeb3React } from "@web3-react/core";
 
 const styles = {
   address: {

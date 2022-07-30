@@ -1,10 +1,18 @@
 {
-  "name": "ultra-admin",
+  "name": "web3-boilerplate",
   "version": "0.1.0",
-  "private": true,
+  "author": "Pedrojok01 <pedrojok@pm.me>",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "fix": "eslint --fix \"**/*.{js,ts,tsx}\"",
+    "prettier": "prettier --config .prettierrc \"**/*.{ts,tsx,js}\" --write"
+  },
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.4.0",
-    "@headlessui/react": "^1.6.6",
     "@walletconnect/ethereum-provider": "^1.7.8",
     "@web3-react/coinbase-wallet": "8.0.23-beta.0",
     "@web3-react/core": "8.0.20-beta.0",
@@ -14,32 +22,28 @@
     "@web3-react/url": "8.0.14-beta.0",
     "@web3-react/walletconnect": "8.0.23-beta.0",
     "antd": "^4.22.1",
-    "assert": "^2.0.0",
     "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.0",
     "ethers": "^5.6.9",
-    "fs": "^0.0.1-security",
-    "https-browserify": "^1.0.0",
-    "os-browserify": "^0.3.0",
     "react": "^18.2.0",
-    "react-app-rewired": "^2.2.1",
     "react-blockies": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "swr": "^1.3.0",
-    "url": "^0.11.0",
-    "util": "^0.12.4"
+    "swr": "^1.3.0"
   },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "fix": "eslint --fix \"**/*.{js,ts,tsx}\"",
-    "prettier": "prettier --config .prettierrc \"**/*.{ts,tsx,js}\" --write"
+  "devDependencies": {
+    "@typechain/ethers-v5": "^10.1.0",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.6.2",
+    "@types/react": "^18.0.15",
+    "@types/react-blockies": "^1.4.1",
+    "@types/react-dom": "^18.0.6",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "typechain": "^8.1.0",
+    "typescript": "^4.7.4"
   },
   "eslintConfig": {
     "extends": [
@@ -58,21 +62,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@typechain/ethers-v5": "^10.1.0",
-    "@types/jest": "^28.1.6",
-    "@types/node": "^18.6.2",
-    "@types/react": "^18.0.15",
-    "@types/react-blockies": "^1.4.1",
-    "@types/react-dom": "^18.0.6",
-    "dotenv": "^16.0.1",
-    "eslint": "^8.20.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
-    "process": "^0.11.10",
-    "typechain": "^8.1.0",
-    "typescript": "^4.7.4"
   }
 }

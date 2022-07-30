@@ -1,15 +1,14 @@
 import { useWeb3React } from "@web3-react/core";
 import { Buffer } from "buffer";
 import ConnectAccount from "./components/Account/ConnectAccount";
-import { Chain } from "./components/Chain";
-import AdminPane from "./components/AdminPane";
+import DisplayPane from "./components/DisplayPane";
 import background from "./assets/images/background.jpg";
-import ultranova_logo from "./assets/images/ultranova_logo.png";
+import web3Boilerplate_logo from "./assets/images/web3Boilerplate_logo.png";
 import { Layout } from "antd";
 import "./App.css";
 import "antd/dist/antd.css";
 
-const { Header } = Layout;
+const { Header, Footer } = Layout;
 
 const styles = {
   layout: {
@@ -30,15 +29,8 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "0 20px"
-  },
-  headerRight: {
-    display: "flex",
-    gap: "10px",
-    alignItems: "center",
-    paddingRight: "10px",
-    fontSize: "15px",
-    fontWeight: "600"
+    padding: "0px 20px",
+    paddingTop: "15px"
   },
   content: {
     display: "flex",
@@ -48,31 +40,52 @@ const styles = {
     marginTop: "100px",
     padding: "10px",
     overflow: "auto"
+  },
+  footer: {
+    position: "fixed",
+    textAlign: "center",
+    width: "100%",
+    bottom: "0",
+    color: "white",
+    backgroundColor: "transparent"
   }
 } as const;
 
 function App() {
-  const { chainId } = useWeb3React();
-
+  const { account, isActive } = useWeb3React();
   if (!window.Buffer) window.Buffer = Buffer;
 
   return (
     <Layout style={styles.layout}>
       <Header style={styles.header}>
         <Logo />
-        <div style={styles.headerRight}>
-          <ConnectAccount desiredChain={1} />
-        </div>
+        <ConnectAccount desiredChain={1} />
       </Header>
+      <div style={styles.content}>{isActive && account && <DisplayPane />}</div>
 
-      <div style={styles.content}>
-        <Chain chainId={chainId} />
-        <AdminPane />
-      </div>
+      <Footer style={styles.footer}>
+        <div style={{ display: "block" }}>
+          Please leave a ⭐️ on this{" "}
+          <a
+            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            boilerplate
+          </a>
+          , if you like it!
+        </div>
+      </Footer>
     </Layout>
   );
 }
 
-export const Logo = () => <img src={ultranova_logo} alt="ultranova_logo" width="180px" />;
+export const Logo = () => {
+  return (
+    <div style={{ paddingTop: "20px" }}>
+      <img src={web3Boilerplate_logo} alt="web3Boilerplate_logo" width="120px" />;
+    </div>
+  );
+};
 
 export default App;

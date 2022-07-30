@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Network } from "@web3-react/network";
 import { WalletConnect } from "@web3-react/walletconnect";
-import { getAddChainParameters } from "../constants/chains";
+import { getAddChainParameters } from "../constants/networks";
 
 export function useSignerOrProvider() {
   const { provider } = useWeb3React();
