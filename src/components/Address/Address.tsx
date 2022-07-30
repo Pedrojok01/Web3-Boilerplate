@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useEthers } from "@usedapp/core";
 import Blockie from "../Blockie";
-import { getEllipsisTxt } from "../../helpers/formatters";
+import { getEllipsisTxt } from "../../utils/formatters";
 import { Skeleton } from "antd";
 import "./identicon.css";
+import { useWeb3React } from "@web3-react/core";
 
 const styles = {
   address: {
@@ -17,13 +17,13 @@ const styles = {
 };
 
 function Address(props: any) {
-  const { account, active } = useEthers();
+  const { account } = useWeb3React();
   const [address, setAddress] = useState<string>();
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   useEffect(() => {
-    setAddress(props?.address || (active && account));
-  }, [account, active, props]);
+    if (account !== undefined) setAddress(account);
+  }, [account]);
 
   if (address === undefined) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 
@@ -54,9 +54,9 @@ function Address(props: any) {
 
   return (
     <div style={{ ...styles.address, ...props.style }}>
-      {props.avatar === "left" && <Blockie address={address} size={7} />}
+      {props.avatar === "left" && <Blockie seed={address} size={7} />}
       <p style={{ paddingTop: "17px" }}>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
-      {props.avatar === "right" && <Blockie address={address} size={7} />}
+      {props.avatar === "right" && <Blockie seed={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );

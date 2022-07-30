@@ -1,31 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { DAppProvider, BSC, BSCTestnet } from "@usedapp/core";
-// import { getDefaultProvider } from "ethers";
-import "./index.css";
+import { Web3ReactProvider } from "@web3-react/core";
+import connectors from "./connectors";
 import App from "./App";
-
-// const config = {
-//   readOnlyChainId: Mainnet.chainId,
-//   readOnlyUrls: {
-//     [Mainnet.chainId]: getDefaultProvider("mainnet")
-//   }
-// };
-
-const config = {
-  networks: [BSC, BSCTestnet],
-  // readOnlyUrls: { [BSC.chainId]: getDefaultProvider("bsc"), [BSCTestnet.chainId]: getDefaultProvider("bsctestnet") };
-  notifications: {
-    expirationPeriod: 1000,
-    checkInterval: 1000
-  }
-};
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <DAppProvider config={config}>
+    <Web3ReactProvider connectors={connectors}>
       <App />
-    </DAppProvider>
+    </Web3ReactProvider>
   </React.StrictMode>
 );

@@ -1,4 +1,4 @@
-import { useEthers } from "@usedapp/core";
+// import { useWeb3React } from "@web3-react/core";
 import { Skeleton } from "antd";
 import Blockies from "react-blockies";
 
@@ -8,17 +8,14 @@ import Blockies from "react-blockies";
  * @returns <Blockies> JSX Elemenet
  */
 
-function Blockie(props: any) {
-  const { account } = useEthers();
-  if (!props.address && !account) return <Skeleton.Avatar active size={40} />;
+function Blockie({ seed, size, scale }: { seed: string; size?: number; scale?: number }) {
+  // const { account } = useWeb3React();
+  if (!seed) return <Skeleton.Avatar active size={40} />;
 
-  return (
-    <Blockies
-      seed={props.currentWallet ? account?.toLowerCase() : props.address.toLowerCase()}
-      className="identicon"
-      {...props}
-    />
-  );
+  if (size) return <Blockies seed={seed.toLowerCase()} size={size} className="identicon" />;
+  if (scale) return <Blockies seed={seed.toLowerCase()} size={size} scale={scale} className="identicon" />;
+
+  return <Blockies seed={seed.toLowerCase()} className="identicon" />;
 }
 
 export default Blockie;

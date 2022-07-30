@@ -1,13 +1,13 @@
-import { useEthers, useEtherBalance } from "@usedapp/core";
-import { formatEther } from "@ethersproject/units";
+import { useWeb3React } from "@web3-react/core";
+import { Buffer } from "buffer";
 import ConnectAccount from "./components/Account/ConnectAccount";
-import { Chains } from "./components/Chains";
-import { Layout } from "antd";
-import "antd/dist/antd.css";
-import "./App.css";
-import background from "./assets/background.jpg";
-import ultranova_logo from "./assets/ultranova_logo.png";
+import { Chain } from "./components/Chain";
 import AdminPane from "./components/AdminPane";
+import background from "./assets/images/background.jpg";
+import ultranova_logo from "./assets/images/ultranova_logo.png";
+import { Layout } from "antd";
+import "./App.css";
+import "antd/dist/antd.css";
 
 const { Header } = Layout;
 
@@ -21,15 +21,6 @@ const styles = {
     height: "100vh",
     overflow: "auto",
     fontFamily: "Sora, sans-serif"
-  },
-  content: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    color: "#041836",
-    marginTop: "100px",
-    padding: "10px",
-    overflow: "auto"
   },
   header: {
     position: "fixed",
@@ -49,43 +40,34 @@ const styles = {
     fontSize: "15px",
     fontWeight: "600"
   },
-  adminButton: {
+  content: {
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "black",
-    color: "white",
-    cursor: "pointer",
-    borderRadius: "25px",
-    width: "100px",
-    height: "40px"
+    alignItems: "flex-start",
+    color: "#041836",
+    marginTop: "100px",
+    padding: "10px",
+    overflow: "auto"
   }
 } as const;
 
 function App() {
-  const { account } = useEthers();
-  const etherBalance = useEtherBalance(account);
-  console.log(etherBalance);
+  const { chainId } = useWeb3React();
+
+  if (!window.Buffer) window.Buffer = Buffer;
 
   return (
     <Layout style={styles.layout}>
       <Header style={styles.header}>
         <Logo />
         <div style={styles.headerRight}>
-          <Chains />
-          <ConnectAccount />
+          <ConnectAccount desiredChain={1} />
         </div>
       </Header>
 
       <div style={styles.content}>
+        <Chain chainId={chainId} />
         <AdminPane />
-        {etherBalance && (
-          <div className="balance">
-            <br />
-            Balance:
-            <p className="bold">{formatEther(etherBalance)}</p>
-          </div>
-        )}
       </div>
     </Layout>
   );

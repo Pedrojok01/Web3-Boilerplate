@@ -12,18 +12,18 @@ export const networkConfigs = {
   1: {
     chainId: 1,
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://etherscan.io/",
+    blockExplorerUrl: "https://etherscan.io",
     wrapped: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
   },
   3: {
     chainId: 3,
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://ropsten.etherscan.io/"
+    blockExplorerUrl: "https://ropsten.etherscan.io"
   },
   4: {
     chainId: 4,
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://rinkeby.etherscan.io/"
+    blockExplorerUrl: "https://rinkeby.etherscan.io"
   },
   5: {
     chainId: 5,
@@ -39,13 +39,13 @@ export const networkConfigs = {
     currencyName: "AVAX",
     currencySymbol: "AVAX",
     rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
-    blockExplorerUrl: "https://cchain.explorer.avax.network/"
+    blockExplorerUrl: "https://cchain.explorer.avax.network"
   },
   56: {
     chainId: 56,
     chainName: "Smart Chain",
-    currencyName: "BNB",
-    currencySymbol: "BNB",
+    currencyName: "BSC",
+    currencySymbol: "BSC",
     rpcUrl: "https://bsc-dataseed.binance.org/",
     blockExplorerUrl: "https://bscscan.com/",
     wrapped: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
@@ -53,10 +53,10 @@ export const networkConfigs = {
   97: {
     chainId: 97,
     chainName: "Smart Chain - Testnet",
-    currencyName: "BNB",
-    currencySymbol: "BNB",
+    currencyName: "BSC",
+    currencySymbol: "BSC",
     rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-    blockExplorerUrl: "https://testnet.bscscan.com/"
+    blockExplorerUrl: "https://testnet.bscscan.com"
   },
   137: {
     chainId: 137,
@@ -64,7 +64,7 @@ export const networkConfigs = {
     currencyName: "MATIC",
     currencySymbol: "MATIC",
     rpcUrl: "https://rpc-mainnet.maticvigil.com/",
-    blockExplorerUrl: "https://polygonscan.com/",
+    blockExplorerUrl: "https://polygonscan.com",
     wrapped: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
   },
   80001: {
@@ -73,7 +73,7 @@ export const networkConfigs = {
     currencyName: "MATIC",
     currencySymbol: "MATIC",
     rpcUrl: "https://rpc-mumbai.matic.today/",
-    blockExplorerUrl: "https://mumbai.polygonscan.com/"
+    blockExplorerUrl: "https://mumbai.polygonscan.com"
   },
   49777: {
     chainId: 49777,
@@ -81,7 +81,7 @@ export const networkConfigs = {
     currencyName: "L3P",
     currencySymbol: "L3P",
     rpcUrl: "https://node.leprichain.blockwell.ai/",
-    blockExplorerUrl: "https://explorer.leprichain.blockwell.ai/"
+    blockExplorerUrl: "https://explorer.leprichain.blockwell.ai"
   },
   49778: {
     chainId: 49778,
@@ -89,7 +89,7 @@ export const networkConfigs = {
     currencyName: "TL3P",
     currencySymbol: "TL3P",
     rpcUrl: "https://node.lepritest.blockwell.ai",
-    blockExplorerUrl: "https://explorer.leprichain.blockwell.ai/"
+    blockExplorerUrl: "https://explorer.leprichain.blockwell.ai"
   }
 };
 

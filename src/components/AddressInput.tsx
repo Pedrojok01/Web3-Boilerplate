@@ -2,11 +2,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Blockie from "./Blockie";
 import { Input, InputRef } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { getEllipsisTxt } from "../helpers/formatters";
-import { useEthers } from "@usedapp/core";
+import { getEllipsisTxt } from "../utils/formatters";
+import { useWeb3React } from "@web3-react/core";
 
 function AddressInput(props: any) {
-  const { library } = useEthers();
+  const { connector } = useWeb3React();
   const input = useRef<InputRef>(null);
   const [address, setAddress] = useState<string>("");
   const [validatedAddress, setValidatedAddress] = useState("");
@@ -22,25 +22,25 @@ function AddressInput(props: any) {
     async (value: string) => {
       setAddress(value);
       if (isSupportedDomain(value)) {
-        const processPromise = (promise: any) => {
-          promise
-            .then((addr: string) => {
-              setValidatedAddress(addr);
-              setIsDomain(true);
-            })
-            .catch(() => {
-              setValidatedAddress("");
-            });
-        };
-        if (value.endsWith(".eth")) {
-          processPromise(library?.resolveName(value));
-          // } else {
-          //   processPromise(
-          //     resolveDomain({
-          //       domain: value
-          //     }).then((r) => r?.address)
-          //   );
-        }
+        // const processPromise = (promise: any) => {
+        //   promise
+        //     .then((addr: string) => {
+        //       setValidatedAddress(addr);
+        //       setIsDomain(true);
+        //     })
+        //     .catch(() => {
+        //       setValidatedAddress("");
+        //     });
+        // };
+        // if (value.endsWith(".eth")) {
+        //   processPromise(connector.provider?. resolveName(value));
+        // } else {
+        //   processPromise(
+        //     resolveDomain({
+        //       domain: value
+        //     }).then((r) => r?.address)
+        //   );
+        // }
       } else if (value.length === 42) {
         setValidatedAddress(getEllipsisTxt(value, 10));
         setIsDomain(false);
@@ -49,7 +49,7 @@ function AddressInput(props: any) {
         setIsDomain(false);
       }
     },
-    [library]
+    [connector]
   );
 
   const Cross = () => (
@@ -86,7 +86,7 @@ function AddressInput(props: any) {
       placeholder={props.placeholder ? props.placeholder : "Public address"}
       prefix={
         isDomain || address.length === 42 ? (
-          <Blockie address={(isDomain ? validatedAddress : address).toLowerCase()} size={8} scale={2.5} />
+          <Blockie seed={(isDomain ? validatedAddress : address).toLowerCase()} size={8} scale={2.5} />
         ) : (
           <SearchOutlined />
         )
