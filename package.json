@@ -12,6 +12,7 @@
     "prettier": "prettier --config .prettierrc \"**/*.{ts,tsx,js}\" --write"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@coinbase/wallet-sdk": "^3.4.0",
     "@walletconnect/ethereum-provider": "^1.7.8",
     "@web3-react/coinbase-wallet": "8.0.23-beta.0",
@@ -37,10 +38,15 @@
     "@types/react": "^18.0.15",
     "@types/react-blockies": "^1.4.1",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "dotenv": "^16.0.1",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
     "typechain": "^8.1.0",
     "typescript": "^4.7.4"

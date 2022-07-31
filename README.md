@@ -16,9 +16,7 @@
 ## Disclaimer
 
 1. This is a work in progress...
-2. Just getting started with Typescript and no React expert on top of that, any contribution/improvment pull-request is more than welcomed!
-
-Let's buidl the new internet together :)
+2. Just getting started with Typescript and no React expert on top of that, so any contribution/improvment pull-request is more than welcomed!
 
 ## Description
 

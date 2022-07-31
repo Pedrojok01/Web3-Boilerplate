@@ -31,8 +31,8 @@ const DisplayPane = () => {
     <div style={styles.container}>
       <div style={styles.title}>Display Info</div>
       <div style={styles.content}>
-        <Infos chainId={chainId} />
         <Status isActivating={isActivating} error={error} isActive={isActive} />
+        <Infos chainId={chainId} />
       </div>
     </div>
   );
