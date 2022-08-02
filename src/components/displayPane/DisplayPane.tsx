@@ -36,13 +36,16 @@ const DisplayPane = () => {
       <div style={styles.content}>
         <Status isActivating={isActivating} error={error} isActive={isActive} />
         <Infos chainId={chainId} />
-        <Divider />
+
         {isActive && (
-          <div style={{ display: "inline-flex", gap: "20px" }}>
-            <SignMessage />
-            <Divider type="vertical" style={{ fontSize: "120px !important" }} />
-            <TransferEth />
-          </div>
+          <>
+            <Divider />
+            <div style={{ display: "inline-flex", gap: "20px" }}>
+              <SignMessage />
+              <Divider type="vertical" style={{ fontSize: "120px !important" }} />
+              <TransferEth />
+            </div>
+          </>
         )}
       </div>
     </div>
