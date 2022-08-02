@@ -11,7 +11,7 @@ import {
   Overrides,
   PopulatedTransaction,
   Signer,
-  utils,
+  utils
 } from "ethers";
 import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
@@ -32,40 +32,19 @@ export interface GenericERC20Interface extends utils.Interface {
   };
 
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "approve",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "totalSupply",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferFrom",
-    values: [string, string, BigNumberish]
-  ): string;
+  encodeFunctionData(functionFragment: "approve", values: [string, BigNumberish]): string;
+  encodeFunctionData(functionFragment: "totalSupply", values?: undefined): string;
+  encodeFunctionData(functionFragment: "transferFrom", values: [string, string, BigNumberish]): string;
   encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "transfer",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "allowance",
-    values: [string, string]
-  ): string;
+  encodeFunctionData(functionFragment: "transfer", values: [string, BigNumberish]): string;
+  encodeFunctionData(functionFragment: "allowance", values: [string, string]): string;
 
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "totalSupply",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferFrom",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "totalSupply", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "transferFrom", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
@@ -88,10 +67,7 @@ export type ApprovalEvent = TypedEvent<
 
 export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
 
-export type TransferEvent = TypedEvent<
-  [string, string, BigNumber],
-  { from: string; to: string; value: BigNumber }
->;
+export type TransferEvent = TypedEvent<[string, string, BigNumber], { from: string; to: string; value: BigNumber }>;
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
@@ -109,13 +85,9 @@ export interface GenericERC20 extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -142,10 +114,7 @@ export interface GenericERC20 extends BaseContract {
 
     decimals(overrides?: CallOverrides): Promise<[number]>;
 
-    balanceOf(
-      _owner: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { balance: BigNumber }>;
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<[BigNumber] & { balance: BigNumber }>;
 
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
@@ -155,11 +124,7 @@ export interface GenericERC20 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    allowance(
-      _owner: string,
-      _spender: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    allowance(_owner: string, _spender: string, overrides?: CallOverrides): Promise<[BigNumber]>;
   };
 
   name(overrides?: CallOverrides): Promise<string>;
@@ -191,29 +156,16 @@ export interface GenericERC20 extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  allowance(
-    _owner: string,
-    _spender: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  allowance(_owner: string, _spender: string, overrides?: CallOverrides): Promise<BigNumber>;
 
   callStatic: {
     name(overrides?: CallOverrides): Promise<string>;
 
-    approve(
-      _spender: string,
-      _value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    approve(_spender: string, _value: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    transferFrom(
-      _from: string,
-      _to: string,
-      _value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    transferFrom(_from: string, _to: string, _value: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
     decimals(overrides?: CallOverrides): Promise<number>;
 
@@ -221,17 +173,9 @@ export interface GenericERC20 extends BaseContract {
 
     symbol(overrides?: CallOverrides): Promise<string>;
 
-    transfer(
-      _to: string,
-      _value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    transfer(_to: string, _value: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
-    allowance(
-      _owner: string,
-      _spender: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    allowance(_owner: string, _spender: string, overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   filters: {
@@ -240,22 +184,10 @@ export interface GenericERC20 extends BaseContract {
       spender?: string | null,
       value?: null
     ): ApprovalEventFilter;
-    Approval(
-      owner?: string | null,
-      spender?: string | null,
-      value?: null
-    ): ApprovalEventFilter;
+    Approval(owner?: string | null, spender?: string | null, value?: null): ApprovalEventFilter;
 
-    "Transfer(address,address,uint256)"(
-      from?: string | null,
-      to?: string | null,
-      value?: null
-    ): TransferEventFilter;
-    Transfer(
-      from?: string | null,
-      to?: string | null,
-      value?: null
-    ): TransferEventFilter;
+    "Transfer(address,address,uint256)"(from?: string | null, to?: string | null, value?: null): TransferEventFilter;
+    Transfer(from?: string | null, to?: string | null, value?: null): TransferEventFilter;
   };
 
   estimateGas: {
@@ -288,11 +220,7 @@ export interface GenericERC20 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    allowance(
-      _owner: string,
-      _spender: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    allowance(_owner: string, _spender: string, overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -315,10 +243,7 @@ export interface GenericERC20 extends BaseContract {
 
     decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    balanceOf(
-      _owner: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -328,10 +253,6 @@ export interface GenericERC20 extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    allowance(
-      _owner: string,
-      _spender: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    allowance(_owner: string, _spender: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

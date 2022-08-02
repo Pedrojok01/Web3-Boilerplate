@@ -8,6 +8,11 @@
 
 .ant-btn-primary {
 background-color: black !important;
+border: none !important;
+}
+
+.ant-btn:hover {
+  transform: scale(1.05) !important;
 }
 
 .ant-dropdown {

@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import ConnectAccount from "./components/Account/ConnectAccount";
-import DisplayPane from "./components/DisplayPane";
+import DisplayPane from "./components/displayPane/DisplayPane";
 import background from "./assets/images/background.jpg";
 import web3Boilerplate_logo from "./assets/images/web3Boilerplate_logo.png";
 import { Layout } from "antd";

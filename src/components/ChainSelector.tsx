@@ -73,6 +73,7 @@ function ChainSelector() {
   const handleMenuClick: MenuProps["onClick"] = async (e) => {
     if (e?.key !== undefined && e?.key !== null) {
       await switchChain(parseInt(e.key));
+      window.location.reload();
     }
   };
 

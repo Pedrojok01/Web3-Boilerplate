@@ -69,7 +69,9 @@ yarn start
 
 <br></br>
 
-# ⭐️ Enjoy... and don't forget to leave a star if you like it !!! ⭐️
+# Enjoy!!!
+
+### ⭐️ ... and don't forget to leave a star if you like it! ⭐️
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

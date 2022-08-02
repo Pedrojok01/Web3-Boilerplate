@@ -1,6 +1,9 @@
 import { useWeb3React } from "@web3-react/core";
-import { Infos } from "./Infos";
-import { Status } from "./Status";
+import { Divider } from "antd";
+import { Infos } from "./components/Infos";
+import { SignMessage } from "./components/SignMessage";
+import { Status } from "./components/Status";
+import { TransferEth } from "./components/TransferEth";
 
 const styles = {
   container: {
@@ -18,7 +21,7 @@ const styles = {
     marginBottom: "10px"
   },
   content: {
-    width: "70%",
+    width: "85%",
     margin: "auto",
     fontSize: "17px"
   }
@@ -33,6 +36,14 @@ const DisplayPane = () => {
       <div style={styles.content}>
         <Status isActivating={isActivating} error={error} isActive={isActive} />
         <Infos chainId={chainId} />
+        <Divider />
+        {isActive && (
+          <div style={{ display: "inline-flex", gap: "20px" }}>
+            <SignMessage />
+            <Divider type="vertical" style={{ fontSize: "120px !important" }} />
+            <TransferEth />
+          </div>
+        )}
       </div>
     </div>
   );
