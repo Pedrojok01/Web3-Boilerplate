@@ -28,7 +28,7 @@ export function useToken(address: string) {
     // if decimals isn't ready, allowance isn't fetched but decimals is only ready when contract is ready
     // also, having decimals as a dependency here and return null if not available prevents flickering
     return useSWR(decimals ? [`/token/${address}/allowance`, owner, spender] : null, async (_, owner, spender) => {
-      if (owner) {
+      if (owner && contract) {
         const allowance = await contract.allowance(owner, spender);
         return parseBigNumberToFloat(allowance, decimals);
       }
@@ -37,16 +37,19 @@ export function useToken(address: string) {
   }
 
   function useDecimals() {
-    // never changes so make it immutable
-    // only fetch decimals when there is an account which means there must be a provider
-    const { data } = useSWRImmutable(account ? `/token/${address}/decimals/` : null, () => contract.decimals());
-    return data;
+    if (contract) {
+      const { data } = useSWRImmutable(account ? `/token/${address}/decimals/` : null, () => contract.decimals());
+      return data;
+    }
+    return undefined;
   }
 
   function useName() {
-    // never changes so make it immutable
-    const { data } = useSWRImmutable(account ? `/token/${address}/name/` : null, () => contract.name());
-    return data;
+    if (contract) {
+      const { data } = useSWRImmutable(account ? `/token/${address}/name/` : null, () => contract.name());
+      return data;
+    }
+    return undefined;
   }
 
   // strictly speaking, the key in this case would need the contract as a dependency as well but it's implicitly taken from the useDecimals hook
@@ -58,7 +61,7 @@ export function useToken(address: string) {
       // needs this decimal check to tell it to only conditionally fetch balance when decimals are ready, otherwise there will be flickering
       decimals ? [`/token/${address}/balance`, owner, decimals] : null,
       async (_, owner, decimals) => {
-        if (owner) {
+        if (owner && contract) {
           const bal = await contract.balanceOf(owner);
           return parseBigNumberToFloat(bal, decimals);
         }
