@@ -1,14 +1,14 @@
 import { useWeb3React } from "@web3-react/core";
+import { Infos, SignMessage, Status, TransferEth } from "./components";
 import { Divider } from "antd";
-import { Infos } from "./components/Infos";
-import { SignMessage } from "./components/SignMessage";
-import { Status } from "./components/Status";
-import { TransferEth } from "./components/TransferEth";
+import { useWindowWidthAndHeight } from "../../hooks/useWindowWidthAndHeight";
 
 const styles = {
   container: {
     background: "#f5f4f4",
-    width: "70%",
+    width: "80%",
+    minWidth: "340px",
+    maxWidth: "900px",
     textAlign: "center",
     margin: "auto",
     padding: "30px 0",
@@ -24,11 +24,19 @@ const styles = {
     width: "85%",
     margin: "auto",
     fontSize: "17px"
+  },
+  action: {
+    display: "inline-flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "20px"
   }
 } as const;
 
-const DisplayPane = () => {
+const DisplayPane: React.FC = () => {
   const { chainId, isActivating, isActive } = useWeb3React();
+  const [width] = useWindowWidthAndHeight();
+  const isMobile = width <= 768;
 
   return (
     <div style={styles.container}>
@@ -40,9 +48,9 @@ const DisplayPane = () => {
         {isActive && (
           <>
             <Divider />
-            <div style={{ display: "inline-flex", gap: "20px" }}>
+            <div style={styles.action}>
               <SignMessage />
-              <Divider type="vertical" style={{ fontSize: "120px !important" }} />
+              {!isMobile && <Divider type="vertical" style={{ fontSize: "120px !important" }} />}
               <TransferEth />
             </div>
           </>

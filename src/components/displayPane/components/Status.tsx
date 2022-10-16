@@ -10,13 +10,13 @@ const styles = {
   }
 } as const;
 
-export function Status({
+const Status = ({
   isActivating,
   isActive
 }: {
   isActivating: ReturnType<Web3ReactHooks["useIsActivating"]>;
   isActive: ReturnType<Web3ReactHooks["useIsActive"]>;
-}) {
+}) => {
   return (
     <div style={styles.display}>
       {isActivating ? (
@@ -34,4 +34,6 @@ export function Status({
       )}
     </div>
   );
-}
+};
+
+export default Status;

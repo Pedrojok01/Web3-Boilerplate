@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Button, InputNumber, message } from "antd";
 import AddressInput from "../../AddressInput";
@@ -13,7 +13,7 @@ const styles = {
   }
 } as const;
 
-export function TransferEth(): ReactElement {
+const TransferEth: React.FC = () => {
   const { account, provider } = useWeb3React();
   const balance = useNativeBalance(provider, account);
   const [amount, setAmount] = useState<number | null>();
@@ -52,7 +52,7 @@ export function TransferEth(): ReactElement {
   }
 
   return (
-    <div style={{ width: "80%" }}>
+    <div style={{ width: "50%", minWidth: "300px" }}>
       <AddressInput onChange={setReceiver} address={receiver} />
       <div style={{ display: "inline-flex", gap: "10px", width: "100%" }}>
         <InputNumber
@@ -72,4 +72,6 @@ export function TransferEth(): ReactElement {
       </div>
     </div>
   );
-}
+};
+
+export default TransferEth;

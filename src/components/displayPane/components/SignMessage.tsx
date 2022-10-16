@@ -8,7 +8,7 @@ const styles = {
   }
 } as const;
 
-export function SignMessage(): ReactElement {
+const SignMessage: React.FC = (): ReactElement => {
   const { account, provider, chainId } = useWeb3React();
   const [messageAuth, setMessageAuth] = useState<string>("");
 
@@ -55,7 +55,7 @@ export function SignMessage(): ReactElement {
   }
 
   return (
-    <div style={{ width: "80%" }}>
+    <div style={{ width: "50%", minWidth: "300px" }}>
       <Input
         allowClear
         value={messageAuth}
@@ -68,4 +68,6 @@ export function SignMessage(): ReactElement {
       </Button>
     </div>
   );
-}
+};
+
+export default SignMessage;

@@ -173,7 +173,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
             footer={null}
             onCancel={() => setIsModalVisible(false)}
             bodyStyle={{
-              width: "400px",
+              width: "350px",
               padding: "15px",
               fontSize: "17px",
               fontWeight: "500"

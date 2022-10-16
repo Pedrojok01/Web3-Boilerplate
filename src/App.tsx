@@ -7,6 +7,7 @@ import { Layout } from "antd";
 import "./App.css";
 import "antd/dist/antd.css";
 import ChainSelector from "./components/ChainSelector";
+import { useWindowWidthAndHeight } from "./hooks/useWindowWidthAndHeight";
 
 const { Header, Footer } = Layout;
 
@@ -27,7 +28,6 @@ const styles = {
     width: "100%",
     backgroundColor: "transparent",
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
     padding: "0px 20px",
     paddingTop: "15px"
@@ -61,11 +61,13 @@ const styles = {
 
 function App() {
   if (!window.Buffer) window.Buffer = Buffer;
+  const [width] = useWindowWidthAndHeight();
+  const isMobile = width <= 768;
 
   return (
     <Layout style={styles.layout}>
-      <Header style={styles.header}>
-        <Logo />
+      <Header style={{ ...styles.header, justifyContent: isMobile ? "flex-end" : "space-between" }}>
+        {!isMobile && <Logo />}
         <div style={styles.headerRight}>
           <ChainSelector />
           <ConnectAccount />
