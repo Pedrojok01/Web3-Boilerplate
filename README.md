@@ -54,6 +54,8 @@ git clone https://github.com/Pedrojok01/Web3-Boilerplate.git .
 yarn install
 ```
 
+<b>IMPORTANT: Double check your package.json to make sure you've installed the exact same version for all @web3-react packages. Since the version 8+ is still in beta, it may not be automatically installed.</b>
+
 ### start the web3-boilerplate:
 
 ```
