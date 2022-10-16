@@ -16,7 +16,7 @@ const styles = {
 export function TransferEth(): ReactElement {
   const { account, provider } = useWeb3React();
   const balance = useNativeBalance(provider, account);
-  const [amount, setAmount] = useState<number>();
+  const [amount, setAmount] = useState<number | null>();
   const [receiver, setReceiver] = useState<string>();
 
   function handleSignMessage(event: { preventDefault: () => void }): void {
@@ -34,12 +34,17 @@ export function TransferEth(): ReactElement {
         value: ethers.utils.parseEther(amtStrg)
       };
 
-      try {
-        const receipt = await provider!.getSigner(account).sendTransaction(tx);
-        console.log(receipt);
-        message.info(`Success!\n\nTx Hash: ${receipt.hash}`);
-      } catch (error: any) {
-        message.error("Error!" + (error && error.message ? `\n\n${error.message}` : ""));
+      if (provider) {
+        try {
+          const receipt = await provider.getSigner(account).sendTransaction(tx);
+          message.info(`Success!\n\nTx Hash: ${receipt.hash}`);
+        } catch (error) {
+          if (typeof error === "string") {
+            message.error("Error!" + `\n\n${error}`);
+          } else if (error instanceof Error) {
+            message.error("Error!" + `\n\n${error.message}`);
+          }
+        }
       }
     }
 
@@ -48,14 +53,14 @@ export function TransferEth(): ReactElement {
 
   return (
     <div style={{ width: "80%" }}>
-      <AddressInput onChange={setReceiver} />
+      <AddressInput onChange={setReceiver} address={receiver} />
       <div style={{ display: "inline-flex", gap: "10px", width: "100%" }}>
         <InputNumber
           value={amount}
           onChange={setAmount}
           placeholder="Amount to transfer"
           min={0}
-          max={parseBigNumberToFloat(balance!)}
+          max={balance ? parseBigNumberToFloat(balance) : 0}
           style={{ width: "100%", height: "80%", marginBlock: "auto" }}
         />
 

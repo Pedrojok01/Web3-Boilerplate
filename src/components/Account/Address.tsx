@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import Blockie from "../Blockie";
 import { getEllipsisTxt } from "../../utils/formatters";
@@ -16,7 +16,14 @@ const styles = {
   }
 };
 
-function Address(props: any) {
+export interface AddressProps {
+  style: CSSProperties | undefined;
+  avatar: string;
+  size: number | undefined;
+  copyable: boolean;
+}
+
+const Address: React.FC<AddressProps> = (props) => {
   const { account } = useWeb3React();
   const [address, setAddress] = useState<string>();
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -60,7 +67,7 @@ function Address(props: any) {
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );
-}
+};
 
 export default Address;
 

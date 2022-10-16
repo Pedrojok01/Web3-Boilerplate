@@ -10,17 +10,16 @@ function getContract<T = Contract>(address: string, abi: ContractInterface, prov
 }
 
 // heavily inspired by uniswaps interface, thanks Noah, great work!
-export function useContract<Contract = any>(address: string, abi: ContractInterface) {
+export function useContract<Contract>(address: string, abi: ContractInterface) {
   const signerOrProvider = useSignerOrProvider();
 
   if (!isAddress(address) || address === AddressZero) {
     throw Error(`Invalid 'address' parameter '${address}'.`);
   }
 
-  const contract = useMemo(
-    () => getContract<Contract>(address, abi, signerOrProvider!),
-    [address, abi, signerOrProvider]
-  );
+  const contract = signerOrProvider
+    ? useMemo(() => getContract<Contract>(address, abi, signerOrProvider), [address, abi, signerOrProvider])
+    : undefined;
 
   return contract;
 }

@@ -106,8 +106,10 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
                 label="MetaMask"
                 image={metamask_Logo}
                 onClick={async () => {
-                  await metaMask.activate(getAddChainParameters(chain!));
-                  window.localStorage.setItem("connectorId", "injected");
+                  if (chain) {
+                    await metaMask.activate(getAddChainParameters(chain));
+                    window.localStorage.setItem("connectorId", "injected");
+                  }
                 }}
               />
 
@@ -124,8 +126,10 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
                 label="Coinbase Wallet"
                 image={coinbase_Logo}
                 onClick={async () => {
-                  await coinbaseWallet.activate(getAddChainParameters(chain!));
-                  window.localStorage.setItem("connectorId", "injected");
+                  if (chain) {
+                    await coinbaseWallet.activate(getAddChainParameters(chain));
+                    window.localStorage.setItem("connectorId", "injected");
+                  }
                 }}
               />
               <Divider />

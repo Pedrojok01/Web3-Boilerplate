@@ -1,5 +1,4 @@
 import { useWeb3React, Web3ReactHooks } from "@web3-react/core";
-// import { formatEther } from "ethers/lib/utils";
 import { CHAINS } from "../../../constants/networks";
 import { useNativeBalance } from "../../../hooks/useNativeBalance";
 import { parseBigNumberToFloat } from "../../../utils/formatters";
@@ -19,7 +18,6 @@ export function Infos({ chainId }: { chainId: ReturnType<Web3ReactHooks["useChai
   const balance = useNativeBalance(provider, account);
 
   if (chainId === undefined) return null;
-
   const name = chainId ? CHAINS[chainId]?.name : undefined;
 
   return (
@@ -41,7 +39,13 @@ export function Infos({ chainId }: { chainId: ReturnType<Web3ReactHooks["useChai
       )}
       <br></br>
       <br></br>
-      Balance: <span style={styles.statusText}>Ξ {parseBigNumberToFloat(balance!).toFixed(4)}</span>
+      Balance:
+      <span style={styles.statusText}>
+        {balance
+          ? `
+          Ξ ${parseBigNumberToFloat(balance).toFixed(4)}`
+          : 0}
+      </span>
     </div>
   );
 }

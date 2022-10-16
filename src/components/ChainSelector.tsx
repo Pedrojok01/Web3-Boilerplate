@@ -66,7 +66,6 @@ function ChainSelector() {
   useEffect(() => {
     if (!chainId) return undefined;
     setSelected(menuItems.find((item) => item?.key === chainId.toString()));
-    console.log("current chainId: ", chainId);
     return;
   }, [chainId]);
 

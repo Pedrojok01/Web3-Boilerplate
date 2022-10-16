@@ -28,8 +28,11 @@ export function useToken(address: string) {
     // if decimals isn't ready, allowance isn't fetched but decimals is only ready when contract is ready
     // also, having decimals as a dependency here and return null if not available prevents flickering
     return useSWR(decimals ? [`/token/${address}/allowance`, owner, spender] : null, async (_, owner, spender) => {
-      const allowance = await contract.allowance(owner!, spender);
-      return parseBigNumberToFloat(allowance, decimals);
+      if (owner) {
+        const allowance = await contract.allowance(owner, spender);
+        return parseBigNumberToFloat(allowance, decimals);
+      }
+      return undefined;
     });
   }
 
@@ -55,8 +58,11 @@ export function useToken(address: string) {
       // needs this decimal check to tell it to only conditionally fetch balance when decimals are ready, otherwise there will be flickering
       decimals ? [`/token/${address}/balance`, owner, decimals] : null,
       async (_, owner, decimals) => {
-        const bal = await contract.balanceOf(owner!);
-        return parseBigNumberToFloat(bal, decimals);
+        if (owner) {
+          const bal = await contract.balanceOf(owner);
+          return parseBigNumberToFloat(bal, decimals);
+        }
+        return undefined;
       }
     );
   }
@@ -100,7 +106,10 @@ export function useNativeBalance() {
   const { account, provider } = useWeb3React();
 
   return useSWR(provider ? ["/native/balance/", account] : null, async (_, account) => {
-    const bal = await provider?.getBalance(account!);
-    return parseBigNumberToFloat(bal!, 18);
+    if (account && provider) {
+      const bal = await provider.getBalance(account);
+      return parseBigNumberToFloat(bal, 18);
+    }
+    return undefined;
   });
 }

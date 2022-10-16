@@ -36,13 +36,18 @@ export function SignMessage(): ReactElement {
     };
 
     async function signMessage(account: string): Promise<void> {
-      const authMessage = messageAuth!.length > 0 ? { Title: `${messageAuth}` } : { Title: "Hello Web3!" };
-
-      try {
-        const signature = await provider!.getSigner(account)._signTypedData(domain, types, authMessage);
-        message.info(`Success!\n\n${signature}`);
-      } catch (error: any) {
-        message.error("Error!" + (error && error.message ? `\n\n${error.message}` : ""));
+      const authMessage = messageAuth.length > 0 ? { Title: `${messageAuth}` } : { Title: "Hello Web3!" };
+      if (provider) {
+        try {
+          const signature = await provider.getSigner(account)._signTypedData(domain, types, authMessage);
+          message.info(`Success!\n\n${signature}`);
+        } catch (error) {
+          if (typeof error === "string") {
+            message.error("Error!" + `\n\n${error}`);
+          } else if (error instanceof Error) {
+            message.error("Error!" + `\n\n${error.message}`);
+          }
+        }
       }
     }
 

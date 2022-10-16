@@ -1,11 +1,20 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { CSSProperties, Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import Blockie from "./Blockie";
 import { Input, InputRef } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { getEllipsisTxt } from "../utils/formatters";
 import { useWeb3React } from "@web3-react/core";
 
-function AddressInput(props: any) {
+export interface AddressInputProps {
+  address?: string;
+  setAddress?: Dispatch<SetStateAction<string>>;
+  placeholder?: string;
+  autoFocus?: boolean;
+  style?: CSSProperties | undefined;
+  onChange: Dispatch<SetStateAction<string | undefined>>;
+}
+
+const AddressInput: React.FC<AddressInputProps> = (props) => {
   const { connector } = useWeb3React();
   const input = useRef<InputRef>(null);
   const [address, setAddress] = useState<string>("");
@@ -101,7 +110,7 @@ function AddressInput(props: any) {
       style={validatedAddress ? { ...props?.style, border: "1px solid rgb(33, 191, 150)" } : { ...props?.style }}
     />
   );
-}
+};
 
 function isSupportedDomain(domain: string) {
   return [".eth", ".crypto", ".coin", ".wallet", ".bitcoin", ".x", ".888", ".nft", ".dao", ".blockchain"].some((tld) =>
