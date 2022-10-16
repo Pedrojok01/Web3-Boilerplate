@@ -5,6 +5,7 @@ import { Menu, Dropdown, Button } from "antd";
 import type { MenuProps } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ethereum_Logo from "../assets/images/ethereum_Logo.png";
+import polygon_logo from "../assets/images/polygon_logo.png";
 import bsc_Logo from "../assets/svg/bsc_Logo.svg";
 
 const styles = {
@@ -52,6 +53,8 @@ function ChainSelector() {
     if (!chainId) return undefined;
     if (chainId === 1 || chainId === 5) {
       setLabel(labelToShow(ethereum_Logo, "Ethereum_logo"));
+    } else if (chainId === 137 || chainId === 80001) {
+      setLabel(labelToShow(polygon_logo, "Polygon_logo"));
     } else setLabel(labelToShow(bsc_Logo, "BNB_logo"));
     return;
   }, [chainId]);
@@ -59,6 +62,8 @@ function ChainSelector() {
   const menuItems: MenuItem[] = [
     getItem("1", "Ethereum", "Ethereum", labelToShow(ethereum_Logo, "Ethereum_logo")),
     getItem("5", "Goerli Testnet", "Goerli Testnet", labelToShow(ethereum_Logo, "Ethereum_logo")),
+    getItem("137", "Polygon", "Polygon", labelToShow(polygon_logo, "Polygon_logo")),
+    getItem("80001", "Mumbai", "Mumbai", labelToShow(polygon_logo, "Polygon_logo")),
     getItem("56", "BNB Chain", "BNB Chain", labelToShow(bsc_Logo, "BNB_logo")),
     getItem("97", "BNB Testnet", "BNB Testnet", labelToShow(bsc_Logo, "BNB_logo"))
   ];

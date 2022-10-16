@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { getAddChainParameters, getExplorer } from "../../constants/networks";
+import { getExplorer } from "../../constants/networks";
 import Blockie from "../Blockie";
 import Address from "./Address";
 import ConnectButton from "./ConnectButton";
@@ -55,7 +55,7 @@ interface WantedChain {
   chain?: number;
 }
 
-const ConnectAccount: React.FC<WantedChain> = (props) => {
+const ConnectAccount: React.FC<WantedChain> = () => {
   const { account, chainId } = useWeb3React();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
@@ -77,7 +77,30 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
     }
   };
 
-  const chain = props.chain !== undefined ? props.chain : chainId;
+  const activateConnector = async (label: string) => {
+    switch (label) {
+      case "MetaMask":
+        await metaMask.activate();
+        window.localStorage.setItem("connectorId", "injected");
+
+        break;
+
+      case "WalletConnect":
+        await walletConnect.activate();
+        window.localStorage.setItem("connectorId", "wallet_connect");
+
+        break;
+
+      case "Coinbase Wallet":
+        await coinbaseWallet.activate();
+        window.localStorage.setItem("connectorId", "injected");
+
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <>
@@ -102,35 +125,18 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
             <div style={styles.modalTitle}>Connect Your Wallet</div>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <ConnectButton
-                label="MetaMask"
-                image={metamask_Logo}
-                onClick={async () => {
-                  if (chain) {
-                    await metaMask.activate(getAddChainParameters(chain));
-                    window.localStorage.setItem("connectorId", "injected");
-                  }
-                }}
-              />
+              <ConnectButton label="MetaMask" image={metamask_Logo} onClick={() => activateConnector("MetaMask")} />
 
               <ConnectButton
                 label="WalletConnect"
                 image={walletconnect_Logo}
-                onClick={async () => {
-                  await walletConnect.activate();
-                  window.localStorage.setItem("connectorId", "wallet_connect");
-                }}
+                onClick={() => activateConnector("WalletConnect")}
               />
 
               <ConnectButton
                 label="Coinbase Wallet"
                 image={coinbase_Logo}
-                onClick={async () => {
-                  if (chain) {
-                    await coinbaseWallet.activate(getAddChainParameters(chain));
-                    window.localStorage.setItem("connectorId", "injected");
-                  }
-                }}
+                onClick={() => activateConnector("Coinbase Wallet")}
               />
               <Divider />
               <div style={{ margin: "auto", fontSize: "15px", marginBottom: "15px" }}>
