@@ -28,13 +28,13 @@ const styles = {
 } as const;
 
 const DisplayPane = () => {
-  const { chainId, isActivating, error, isActive } = useWeb3React();
+  const { chainId, isActivating, isActive } = useWeb3React();
 
   return (
     <div style={styles.container}>
       <div style={styles.title}>Display Info</div>
       <div style={styles.content}>
-        <Status isActivating={isActivating} error={error} isActive={isActive} />
+        <Status isActivating={isActivating} isActive={isActive} />
         <Infos chainId={chainId} />
 
         {isActive && (

@@ -1,6 +1,6 @@
 {
   "name": "web3-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Pedrojok01 <pedrojok@pm.me>",
   "scripts": {
     "start": "react-scripts start",
@@ -16,13 +16,13 @@
     "@coinbase/wallet-sdk": "^3.4.0",
     "@walletconnect/ethereum-provider": "^1.7.8",
     "@web3-react/abstract-connector": "^6.0.7",
-    "@web3-react/coinbase-wallet": "8.0.23-beta.0",
-    "@web3-react/core": "8.0.20-beta.0",
-    "@web3-react/metamask": "8.0.16-beta.0",
-    "@web3-react/network": "8.0.15-beta.0",
-    "@web3-react/types": "8.0.10-beta.0",
-    "@web3-react/url": "8.0.14-beta.0",
-    "@web3-react/walletconnect": "8.0.23-beta.0",
+    "@web3-react/coinbase-wallet": "8.0.34-beta.0",
+    "@web3-react/core": "8.0.35-beta.0",
+    "@web3-react/metamask": "8.0.28-beta.0",
+    "@web3-react/network": "8.0.27-beta.0",
+    "@web3-react/types": "8.0.20-beta.0",
+    "@web3-react/url": "8.0.25-beta.0",
+    "@web3-react/walletconnect": "8.0.35-beta.0",
     "antd": "^4.22.1",
     "buffer": "^6.0.3",
     "ethers": "^5.6.9",
@@ -33,7 +33,6 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@typechain/ethers-v5": "^10.1.0",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.2",
     "@types/react": "^18.0.15",
@@ -49,7 +48,6 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
-    "typechain": "^8.1.0",
     "typescript": "^4.7.4"
   },
   "eslintConfig": {

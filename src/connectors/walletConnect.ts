@@ -5,10 +5,10 @@ import { URLS } from "../constants/networks";
 
 export const [walletConnect, hooks] = initializeConnector<WalletConnect>(
   (actions) =>
-    new WalletConnect(actions, {
-      rpc: URLS,
-      bridge: "https://bridge.walletconnect.org",
-      qrcode: true
-    }),
-  Object.keys(URLS).map((chainId) => Number(chainId))
+    new WalletConnect({
+      actions,
+      options: {
+        rpc: URLS
+      }
+    })
 );

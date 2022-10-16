@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
+import { getAddChainParameters, getExplorer } from "../../constants/networks";
 import Blockie from "../Blockie";
 import Address from "./Address";
 import ConnectButton from "./ConnectButton";
 import { getEllipsisTxt } from "../../utils/formatters";
 import { metaMask } from "../../connectors/metaMask";
 import { walletConnect } from "../../connectors/walletConnect";
-import { Button, Card, Divider, Modal } from "antd";
-import { SelectOutlined } from "@ant-design/icons";
 import metamask_Logo from "../../assets/svg/metamask_Logo.svg";
 import walletconnect_Logo from "../../assets/svg/walletconnect_Logo.svg";
 import coinbase_Logo from "../../assets/images/coinbase_Logo.png";
 import { coinbaseWallet } from "../../connectors/coinbaseWallet";
-import { getAddChainParameters, getExplorer } from "../../constants/networks";
+import { Button, Card, Divider, Modal } from "antd";
+import { SelectOutlined } from "@ant-design/icons";
 
 const styles = {
   account: {
@@ -68,7 +68,6 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
     if (connector.deactivate) {
       connector.deactivate();
     } else {
-      // @ts-expect-error close can be returned by wallet
       connector.resetState();
     }
     // @ts-expect-error close can be returned by wallet
