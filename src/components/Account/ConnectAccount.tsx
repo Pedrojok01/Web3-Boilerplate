@@ -88,7 +88,7 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
           </Button>
 
           <Modal
-            visible={isAuthModalOpen}
+            open={isAuthModalOpen}
             footer={null}
             onCancel={() => setIsAuthModalOpen(false)}
             bodyStyle={{
@@ -163,7 +163,7 @@ const ConnectAccount: React.FC<WantedChain> = (props) => {
           </div>
 
           <Modal
-            visible={isModalVisible}
+            open={isModalVisible}
             footer={null}
             onCancel={() => setIsModalVisible(false)}
             bodyStyle={{
