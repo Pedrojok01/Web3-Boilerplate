@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
-import { useSwitchChain } from "../hooks/useSwitchChain";
-import { Menu, Dropdown, Button } from "antd";
-import type { MenuProps } from "antd";
+
 import { DownOutlined } from "@ant-design/icons";
+import { useWeb3React } from "@web3-react/core";
+import { Dropdown, Button } from "antd";
+import type { MenuProps } from "antd";
+
 import ethereum_Logo from "../assets/images/ethereum_Logo.png";
 import polygon_logo from "../assets/images/polygon_logo.png";
 import bsc_Logo from "../assets/svg/bsc_Logo.svg";
+import { useSwitchChain } from "../hooks/useSwitchChain";
 
 const styles = {
   item: {
@@ -32,15 +34,6 @@ function ChainSelector() {
   const [selected, setSelected] = useState<MenuItem>();
   const [label, setLabel] = useState<JSX.Element>();
 
-  function getItem(key: React.Key, title: string, label: React.ReactNode, icon?: React.ReactNode): MenuItem {
-    return {
-      key,
-      title,
-      label,
-      icon
-    } as MenuItem;
-  }
-
   const labelToShow = (logo: string, alt: string) => {
     return (
       <div style={{ display: "inline-flex", alignItems: "center" }}>
@@ -59,42 +52,38 @@ function ChainSelector() {
     return;
   }, [chainId]);
 
-  const menuItems: MenuItem[] = [
-    getItem("1", "Ethereum", "Ethereum", labelToShow(ethereum_Logo, "Ethereum_logo")),
-    getItem("5", "Goerli Testnet", "Goerli Testnet", labelToShow(ethereum_Logo, "Ethereum_logo")),
-    getItem("137", "Polygon", "Polygon", labelToShow(polygon_logo, "Polygon_logo")),
-    getItem("80001", "Mumbai", "Mumbai", labelToShow(polygon_logo, "Polygon_logo")),
-    getItem("56", "BNB Chain", "BNB Chain", labelToShow(bsc_Logo, "BNB_logo")),
-    getItem("97", "BNB Testnet", "BNB Testnet", labelToShow(bsc_Logo, "BNB_logo"))
+  const items: MenuProps["items"] = [
+    { label: "Ethereum", key: "1", icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
+    { label: "Goerli Testnet", key: "5", icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
+    { label: "Polygon", key: "137", icon: labelToShow(polygon_logo, "Polygon_logo") },
+    { label: "Mumbai", key: "80001", icon: labelToShow(polygon_logo, "Polygon_logo") },
+    { label: "BNB Chain", key: "56", icon: labelToShow(bsc_Logo, "BNB_logo") },
+    { label: "BNB Testnet", key: "97", icon: labelToShow(bsc_Logo, "BNB_logo") }
   ];
 
   useEffect(() => {
     if (!chainId) return undefined;
-    setSelected(menuItems.find((item) => item?.key === chainId.toString()));
+    setSelected(items.find((item) => item?.key === chainId.toString()));
     return;
   }, [chainId]);
 
-  const handleMenuClick: MenuProps["onClick"] = async (e) => {
-    if (e?.key !== undefined && e?.key !== null) {
-      await switchChain(parseInt(e.key));
-      window.location.reload();
-    }
+  const onClick: MenuProps["onClick"] = async ({ key }) => {
+    await switchChain(parseInt(key));
+    window.location.reload();
   };
-
-  const menu = <Menu onClick={handleMenuClick} items={menuItems} style={styles.item} />;
 
   if (!chainId || !isActive) return null;
 
   return (
     <div>
-      <Dropdown overlay={menu} trigger={["click"]}>
+      <Dropdown menu={{ items, onClick }}>
         <Button style={{ ...styles.button, ...styles.item }}>
           {!selected && <span style={{ marginLeft: "5px" }}>Select Chain</span>}
           {selected && (
             <div style={{ display: "flex", alignItems: "center" }}>
               <span style={{ paddingTop: "5px" }}>{label}</span>
               {/* @ts-expect-error title is a valid object*/}
-              <span style={{ marginRight: "10px" }}>{selected?.title}</span>
+              <span style={{ marginRight: "10px" }}>{selected?.label}</span>
             </div>
           )}
           <DownOutlined />
