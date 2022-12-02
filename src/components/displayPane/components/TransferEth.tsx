@@ -52,7 +52,7 @@ const TransferEth: React.FC = () => {
   }
 
   return (
-    <div style={{ width: "50%", minWidth: "300px" }}>
+    <div style={{ width: "40%", minWidth: "250px" }}>
       <AddressInput onChange={setReceiver} address={receiver} />
       <div style={{ display: "inline-flex", gap: "10px", width: "100%" }}>
         <InputNumber

@@ -55,7 +55,7 @@ const SignMessage: React.FC = (): ReactElement => {
   }
 
   return (
-    <div style={{ width: "50%", minWidth: "300px" }}>
+    <div style={{ width: "40%", minWidth: "250px" }}>
       <Input
         allowClear
         value={messageAuth}
