@@ -12,7 +12,7 @@ border: none !important;
 }
 
 .ant-btn:hover {
-  transform: scale(1.05) !important;
+  transform: scale(1.02) !important;
 }
 
 .ant-dropdown {
@@ -33,8 +33,8 @@ border: none !important;
 }
 
 .ant-modal {
-  display: flex !important;
-  width: 70vw !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: flex;
+  width: 70vw;
+  justify-content: center;
+  align-items: center;
 }

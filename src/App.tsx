@@ -1,12 +1,13 @@
 import { Buffer } from "buffer";
-import ConnectAccount from "./components/Account/ConnectAccount";
-import DisplayPane from "./components/displayPane/DisplayPane";
+
+import { Layout } from "antd";
+
 import background from "./assets/images/background.jpg";
 import web3Boilerplate_logo from "./assets/images/web3Boilerplate_logo.png";
-import { Layout } from "antd";
-import "./App.css";
-import "antd/dist/antd.css";
+import ConnectAccount from "./components/Account/ConnectAccount";
 import ChainSelector from "./components/ChainSelector";
+import DisplayPane from "./components/displayPane/DisplayPane";
+import "./App.css";
 import { useWindowWidthAndHeight } from "./hooks/useWindowWidthAndHeight";
 
 const { Header, Footer } = Layout;
@@ -61,13 +62,11 @@ const styles = {
 
 function App() {
   if (!window.Buffer) window.Buffer = Buffer;
-  const [width] = useWindowWidthAndHeight();
-  const isMobile = width <= 768;
 
   return (
     <Layout style={styles.layout}>
-      <Header style={{ ...styles.header, justifyContent: isMobile ? "flex-end" : "space-between" }}>
-        {!isMobile && <Logo />}
+      <Header style={{ ...styles.header, justifyContent: "space-between" }}>
+        <Logo />
         <div style={styles.headerRight}>
           <ChainSelector />
           <ConnectAccount />
@@ -91,10 +90,20 @@ function App() {
 }
 
 export const Logo = () => {
+  const [width] = useWindowWidthAndHeight();
+  const isMobile = width <= 768;
   return (
-    <div style={{ paddingTop: "20px" }}>
-      <img src={web3Boilerplate_logo} alt="web3Boilerplate_logo" width="120px" />;
-    </div>
+    <>
+      {isMobile ? (
+        <div style={{ paddingTop: "30px" }}>
+          <img src={web3Boilerplate_logo} alt="web3Boilerplate_logo" width="80px" />;
+        </div>
+      ) : (
+        <div style={{ paddingTop: "45px" }}>
+          <img src={web3Boilerplate_logo} alt="web3Boilerplate_logo" width="120px" />;
+        </div>
+      )}
+    </>
   );
 };
 

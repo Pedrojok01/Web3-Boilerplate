@@ -1,8 +1,10 @@
 import React, { CSSProperties, useEffect, useState } from "react";
+
 import { useWeb3React } from "@web3-react/core";
-import Blockie from "../Blockie";
-import { getEllipsisTxt } from "../../utils/formatters";
 import { Skeleton } from "antd";
+
+import { getEllipsisTxt } from "../../utils/formatters";
+import Blockie from "../Blockie";
 import "./identicon.css";
 
 const styles = {
@@ -62,7 +64,7 @@ const Address: React.FC<AddressProps> = (props) => {
   return (
     <div style={{ ...styles.address, ...props.style }}>
       {props.avatar === "left" && <Blockie seed={address} size={7} />}
-      <p style={{ paddingTop: "17px" }}>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
       {props.avatar === "right" && <Blockie seed={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>

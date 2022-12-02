@@ -1,5 +1,3 @@
-import { Image } from "antd";
-
 const styles = {
   connectButton: {
     display: "flex",
@@ -7,7 +5,8 @@ const styles = {
     justifyContent: "space-between",
     cursor: "pointer",
     paddingBlock: "5px",
-    marginBottom: "10px"
+    marginBottom: "12px",
+    boxShadow: "0 4px 4px rgba(0,0,0,.25),0 0 5px rgba(0,0,0,.25),inset 0 0 10px #fff"
   },
   connectButtonText: {
     fontWeight: "600",
@@ -19,7 +18,7 @@ function ConnectButton({ label, image, onClick }: { label: string; image: string
   return (
     <button style={styles.connectButton} key={label} onClick={onClick}>
       <span style={styles.connectButtonText}>{label}</span>
-      <Image src={image} width={32} height={32} alt="MetaMask" />
+      <img src={image} width={32} height={32} alt="MetaMask" />
     </button>
   );
 }

@@ -85,7 +85,7 @@ yarn start
 [typescript-url]: https://www.typescriptlang.org/
 [web3react]: https://img.shields.io/badge/@web3react_v8.0-006600?style=for-the-badge&logo=web3-react&logoColor=4FC08D
 [web3react-url]: https://github.com/Uniswap/web3react#readme
-[antdesign]: https://img.shields.io/badge/AntDesign_v4.23.5-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
+[antdesign]: https://img.shields.io/badge/AntDesign_v5.0.3-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
 [antdesign-url]: https://ant.design/
 [prettier]: https://img.shields.io/badge/Prettier-360D3A?style=for-the-badge&logo=Prettier&logoColor=61DAFB
 [prettier-url]: https://prettier.io/

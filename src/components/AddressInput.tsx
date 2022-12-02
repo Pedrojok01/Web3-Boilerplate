@@ -1,9 +1,11 @@
 import { CSSProperties, Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
-import Blockie from "./Blockie";
-import { Input, InputRef } from "antd";
+
 import { SearchOutlined } from "@ant-design/icons";
-import { getEllipsisTxt } from "../utils/formatters";
 import { useWeb3React } from "@web3-react/core";
+import { Input, InputRef } from "antd";
+
+import { getEllipsisTxt } from "../utils/formatters";
+import Blockie from "./Blockie";
 
 export interface AddressInputProps {
   address?: string;

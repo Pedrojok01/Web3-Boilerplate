@@ -1,8 +1,10 @@
 import { useMemo } from "react";
+
 import { AddressZero } from "@ethersproject/constants";
 import { Provider } from "@ethersproject/providers";
 import { Contract, ContractInterface, Signer } from "ethers";
 import { isAddress } from "ethers/lib/utils";
+
 import { useSignerOrProvider } from "./useSignerOrProvider";
 
 function getContract<T = Contract>(address: string, abi: ContractInterface, provider: Signer | Provider) {
