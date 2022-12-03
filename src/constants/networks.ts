@@ -78,7 +78,7 @@ export const CHAINS: {
     urls: [`https://goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`].filter((url) => url !== undefined),
     name: "Görli",
     nativeCurrency: ETH,
-    blockExplorerUrls: ["https://goerli.infura.io/v3"]
+    blockExplorerUrls: ["https://goerli.etherscan.io/"]
   },
   // Polygon
   137: {
