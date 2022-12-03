@@ -26,9 +26,13 @@ const SignMessage: React.FC = (): ReactElement => {
     }
 
     const domain = {
+      // Give a user friendly name to the specific contract you are signing for
       name: "Web3-Boilerplate",
+      // Just let's you know the latest version.
       version: "1",
+      // Define the chain
       chainId: chainId,
+      // Add verifying contract to make sure you are establishing contracts with the proper entity
       verifyingContract: `${process.env.REACT_APP_VERIFYING_CONTRACT}`
     };
 
