@@ -5,7 +5,7 @@ import { useWeb3React } from "@web3-react/core";
 import { Input, InputRef } from "antd";
 
 import { getEllipsisTxt } from "../utils/formatters";
-import Blockie from "./Blockie";
+import Jazzicons from "./Jazzicons";
 
 export interface AddressInputProps {
   address?: string;
@@ -97,7 +97,7 @@ const AddressInput: React.FC<AddressInputProps> = (props) => {
       placeholder={props.placeholder ? props.placeholder : "Public address"}
       prefix={
         isDomain || address.length === 42 ? (
-          <Blockie seed={(isDomain ? validatedAddress : address).toLowerCase()} size={8} scale={2.5} />
+          <Jazzicons seed={(isDomain ? validatedAddress : address).toLowerCase()} />
         ) : (
           <SearchOutlined />
         )

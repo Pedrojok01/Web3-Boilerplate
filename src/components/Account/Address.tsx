@@ -4,8 +4,7 @@ import { useWeb3React } from "@web3-react/core";
 import { Skeleton } from "antd";
 
 import { getEllipsisTxt } from "../../utils/formatters";
-import Blockie from "../Blockie";
-import "./identicon.css";
+import Jazzicons from "../Jazzicons";
 
 const styles = {
   address: {
@@ -33,6 +32,13 @@ const Address: React.FC<AddressProps> = (props) => {
   useEffect(() => {
     if (account !== undefined) setAddress(account);
   }, [account]);
+
+  useEffect(() => {
+    if (isClicked === true)
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 5000);
+  }, [isClicked]);
 
   if (address === undefined) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 
@@ -63,9 +69,9 @@ const Address: React.FC<AddressProps> = (props) => {
 
   return (
     <div style={{ ...styles.address, ...props.style }}>
-      {props.avatar === "left" && <Blockie seed={address} size={7} />}
+      {props.avatar === "left" && <Jazzicons seed={address} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
-      {props.avatar === "right" && <Blockie seed={address} size={7} />}
+      {props.avatar === "right" && <Jazzicons seed={address} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );

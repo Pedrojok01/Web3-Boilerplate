@@ -3538,13 +3538,6 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-blockies@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@types/react-blockies/-/react-blockies-1.4.1.tgz#d5f6fff8ece3e90f2e7708f8f3156c87333312df"
-  integrity sha512-aDX0g0hwzdodkGLSDNUQr6gXxwclGjnhS8jhsR8uQhAfe/7i3GZD/NDcSlQ2SiQiLhfRxX3NlY+nvBwf5Y0tTg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@^18.0.6":
   version "18.0.9"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.9.tgz#ffee5e4bfc2a2f8774b15496474f8e7fe8d0b504"
@@ -10226,6 +10219,11 @@ merkle-patricia-tree@^2.1.2:
     rlp "^2.0.0"
     semaphore ">=1.0.1"
 
+mersenne-twister@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mersenne-twister/-/mersenne-twister-1.1.0.tgz#f916618ee43d7179efcf641bec4531eb9670978a"
+  integrity sha512-mUYWsMKNrm4lfygPkL3OfGzOPTR2DBlTkBNHM//F6hGp8cLThY897crAlk3/Jo17LEOOjQUrNAx6DvgO77QJkA==
+
 methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
@@ -11727,7 +11725,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.8.1:
+prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -12282,13 +12280,6 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-blockies@1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-blockies/-/react-blockies-1.4.1.tgz#d4f0faf95ac197213a297a370a4d7f77ea3d0b08"
-  integrity sha512-4N015X5oPNnD3xQPsiqolOFzPZSSWyc5mJhJUZShUCHtiGUxVN+1qsWTcglkHMNySux9hUofaispqcw9QkWP5Q==
-  dependencies:
-    prop-types "^15.5.10"
-
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -12346,6 +12337,13 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-jazzicon@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-jazzicon/-/react-jazzicon-1.0.4.tgz#31e5f6908e042786ba93a9093b852dea1870e7a0"
+  integrity sha512-/3kWv5vtAhI18GBFoqjpxRTtL+EImuB73PAC02r/zJQ6E+PAUmoBx8edYvTCIYHwS01uFf6N3elTDqSrVPwg4w==
+  dependencies:
+    mersenne-twister "^1.1.0"
 
 react-native-url-polyfill@^1.3.0:
   version "1.3.0"

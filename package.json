@@ -1,6 +1,6 @@
 {
   "name": "web3-boilerplate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Pedrojok01 <pedrojok@pm.me>",
   "scripts": {
     "start": "react-scripts start",
@@ -26,8 +26,8 @@
     "buffer": "6.0.3",
     "ethers": "5.7.2",
     "react": "18.2.0",
-    "react-blockies": "1.4.1",
     "react-dom": "18.2.0",
+    "react-jazzicon": "^1.0.4",
     "react-scripts": "5.0.1",
     "swr": "1.3.0"
   },
@@ -35,7 +35,6 @@
     "@types/jest": "^29.1.2",
     "@types/node": "^18.11.0",
     "@types/react": "^18.0.21",
-    "@types/react-blockies": "^1.4.1",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
@@ -59,14 +58,10 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "defaults"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "defaults"
     ]
   }
 }

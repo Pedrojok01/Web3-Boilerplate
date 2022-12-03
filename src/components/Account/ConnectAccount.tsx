@@ -6,7 +6,7 @@ import { Button } from "antd";
 import { metaMask } from "../../connectors/metaMask";
 import { walletConnect } from "../../connectors/walletConnect";
 import { getEllipsisTxt } from "../../utils/formatters";
-import Blockie from "../Blockie";
+import Jazzicons from "../Jazzicons";
 import ConnectModal from "./ConnectModal";
 import DisconnectModal from "./DisconnectModal";
 
@@ -91,7 +91,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
             {account && typeof account === "string" && (
               <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
             )}
-            <Blockie seed={account} scale={3} />
+            <Jazzicons seed={account} />
           </div>
 
           <DisconnectModal isModalOpen={isModalVisible} setIsModalOpen={setIsModalVisible} disconnect={disconnect} />
