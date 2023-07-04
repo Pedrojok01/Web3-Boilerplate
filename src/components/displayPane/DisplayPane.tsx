@@ -2,12 +2,13 @@ import { useWeb3React } from "@web3-react/core";
 import { Divider } from "antd";
 
 import { useWindowWidthAndHeight } from "hooks";
+import { theme } from "styles/theme";
 
 import { Infos, SignMessage, Status, TransferEth } from "./components";
 
 const styles = {
   container: {
-    background: "#f5f4f4",
+    background: theme.colors.background,
     width: "80%",
     minWidth: "330px",
     maxWidth: "900px",
@@ -17,7 +18,7 @@ const styles = {
     borderRadius: "10px"
   },
   title: {
-    color: "black",
+    color: theme.colors.black,
     fontWeight: 600,
     fontSize: "30px",
     marginBottom: "10px"
@@ -37,8 +38,7 @@ const styles = {
 
 const DisplayPane: React.FC = () => {
   const { chainId, isActivating, isActive } = useWeb3React();
-  const [width] = useWindowWidthAndHeight();
-  const isMobile = width <= 768;
+  const { isMobile } = useWindowWidthAndHeight();
 
   return (
     <div style={styles.container}>

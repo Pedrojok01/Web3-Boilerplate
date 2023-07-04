@@ -49,7 +49,7 @@ body {
 .ant-dropdown-menu-submenu-title {
   height: 42px;
   gap: 5px;
-  color: rgb(0, 0, 0) !important;
+  color: black !important;
   font-size: 15px !important;
   font-weight: 500 !important;
 }

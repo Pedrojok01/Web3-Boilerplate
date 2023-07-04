@@ -1,7 +1,8 @@
 import { useWeb3React, Web3ReactHooks } from "@web3-react/core";
 
-import { CHAINS } from "constants/networks";
+import { CHAINS } from "data/constants/networks";
 import { useNativeBalance, useWindowWidthAndHeight } from "hooks";
+import { theme } from "styles/theme";
 import { getEllipsisTxt, parseBigNumberToFloat } from "utils/formatters";
 
 const styles = {
@@ -9,7 +10,7 @@ const styles = {
     paddingBlock: "15px"
   },
   statusText: {
-    color: "rgb(46, 46, 46)",
+    color: theme.colors.text,
     fontWeight: 800
   }
 } as const;
@@ -17,8 +18,7 @@ const styles = {
 const Infos = ({ chainId }: { chainId: ReturnType<Web3ReactHooks["useChainId"]> }) => {
   const { account, provider } = useWeb3React();
   const balance = useNativeBalance(provider, account);
-  const [width] = useWindowWidthAndHeight();
-  const isMobile = width <= 768;
+  const { isMobile } = useWindowWidthAndHeight();
 
   if (chainId === undefined) return null;
   const name = chainId ? CHAINS[chainId]?.name : undefined;

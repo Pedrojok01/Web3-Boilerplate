@@ -8,7 +8,7 @@ import type { MenuProps } from "antd";
 import ethereum_Logo from "assets/images/ethereum_Logo.png";
 import polygon_logo from "assets/images/polygon_logo.png";
 import bsc_Logo from "assets/svg/bsc_Logo.svg";
-import { chainIds } from "constants/chainIds";
+import { chainIds } from "data/constants/chainIds";
 import { useSwitchChain } from "hooks";
 
 const styles = {

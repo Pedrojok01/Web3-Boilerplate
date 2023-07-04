@@ -3,7 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 import { Button, Card, Modal } from "antd";
 
 import Address from "./Address";
-import { getExplorer } from "../../constants/networks";
+import { getExplorer } from "../../data/constants/networks";
 
 interface ConnectModalProps {
   isModalOpen: boolean;

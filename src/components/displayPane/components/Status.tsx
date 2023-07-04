@@ -1,11 +1,13 @@
 import type { Web3ReactHooks } from "@web3-react/core";
 
+import { theme } from "styles/theme";
+
 const styles = {
   display: {
     paddingBlock: "15px"
   },
   statusText: {
-    color: "rgb(46, 46, 46)",
+    color: theme.colors.text,
     fontWeight: 800
   }
 } as const;

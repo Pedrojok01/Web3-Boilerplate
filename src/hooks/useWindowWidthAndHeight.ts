@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { theme } from "styles/theme";
+
 export const useWindowWidthAndHeight = () => {
   const windowInnerSize = [window.innerWidth, window.innerHeight];
   const [windowSize, setWidowSize] = useState<number[]>(windowInnerSize);
@@ -12,5 +14,7 @@ export const useWindowWidthAndHeight = () => {
     return () => window.removeEventListener("resize", changeWindowSize);
   }, []);
 
-  return windowSize;
+  const isMobile = windowSize[0] <= theme.breakpoints.medium;
+
+  return { isMobile, windowSize };
 };

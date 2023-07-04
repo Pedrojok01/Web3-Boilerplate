@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Button } from "antd";
 
+import { theme } from "styles/theme";
+
 import ConnectModal from "./ConnectModal";
 import DisconnectModal from "./DisconnectModal";
 import { metaMask } from "../../connectors/metaMask";
@@ -19,7 +21,7 @@ const styles = {
     alignItems: "center",
     width: "fit-content",
     borderRadius: "10px",
-    backgroundColor: "black",
+    backgroundColor: theme.colors.black,
     cursor: "pointer"
   },
   button: {
@@ -31,11 +33,11 @@ const styles = {
     fontSize: "15px",
     margin: "20px 20px",
     border: "none",
-    background: "black",
-    color: "white"
+    background: theme.colors.black,
+    color: theme.colors.white
   },
   text: {
-    color: "white"
+    color: theme.colors.white
   },
   modalTitle: {
     marginBottom: "20px",

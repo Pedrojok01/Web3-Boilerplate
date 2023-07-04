@@ -2,10 +2,11 @@ import { useWeb3React } from "@web3-react/core";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 
+import GenericERC20Abi from "data/abi/GenericERC20.json";
+import { GenericERC20 } from "data/abi/types";
+import { parseBigNumberToFloat } from "utils/formatters";
+
 import { useContract } from "./useContract";
-import GenericERC20Abi from "../abi/GenericERC20.json";
-import { GenericERC20 } from "../abi/types";
-import { parseBigNumberToFloat } from "../utils/formatters";
 
 /**
  *
