@@ -2,6 +2,7 @@
 <h1><strong> Web3 Boilerplate </strong></h1>
 
 [![Stargazers](https://img.shields.io/github/stars/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/stargazers)
+[![Forks](https://img.shields.io/github/forks/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/issues)
 [![Issues](https://img.shields.io/github/issues/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/issues)
 [![MIT License](https://img.shields.io/github/license/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/blob/main/License)
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-black)](https://www.linkedin.com/in/pierre-e/)
@@ -41,8 +42,8 @@ Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplat
 
 ### Make sure you have the following ready:
 
-- [node.js](https://nodejs.org/) installed (developped on LTS v16.16.0)
-- [typescript](https://www.typescriptlang.org/) installed (developped on v4.8.4)
+- [node.js](https://nodejs.org/) installed (developped on LTS v18)
+- [typescript](https://www.typescriptlang.org/) installed (developped on v5.1.6)
 - [yarn](https://yarnpkg.com/) installed
 - [MetaMask](https://metamask.io/) (or any web3 compatible wallet) installed in your browser
 
@@ -85,11 +86,11 @@ yarn start
 
 [react.js]: https://img.shields.io/badge/React_v18.2-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
-[typescript]: https://img.shields.io/badge/typescript_v4.8.4-375BD2?style=for-the-badge&logo=typescript&logoColor=61DAFB
+[typescript]: https://img.shields.io/badge/typescript_v5.1.6-375BD2?style=for-the-badge&logo=typescript&logoColor=61DAFB
 [typescript-url]: https://www.typescriptlang.org/
-[web3react]: https://img.shields.io/badge/@web3react_v8.0-006600?style=for-the-badge&logo=web3-react&logoColor=4FC08D
+[web3react]: https://img.shields.io/badge/@web3react_v8.2-006600?style=for-the-badge&logo=web3-react&logoColor=4FC08D
 [web3react-url]: https://github.com/Uniswap/web3react#readme
-[antdesign]: https://img.shields.io/badge/AntDesign_v5.0.3-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
+[antdesign]: https://img.shields.io/badge/AntDesign_v5.6.4-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
 [antdesign-url]: https://ant.design/
 [prettier]: https://img.shields.io/badge/Prettier-360D3A?style=for-the-badge&logo=Prettier&logoColor=61DAFB
 [prettier-url]: https://prettier.io/
