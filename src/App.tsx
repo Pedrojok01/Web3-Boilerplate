@@ -2,13 +2,13 @@ import { Buffer } from "buffer";
 
 import { Layout } from "antd";
 
-import background from "./assets/images/background.jpg";
-import web3Boilerplate_logo from "./assets/images/web3Boilerplate_logo.png";
-import ConnectAccount from "./components/Account/ConnectAccount";
-import ChainSelector from "./components/ChainSelector";
-import DisplayPane from "./components/displayPane/DisplayPane";
-import "./App.css";
-import { useWindowWidthAndHeight } from "./hooks/useWindowWidthAndHeight";
+import background from "assets/images/background.jpg";
+import web3Boilerplate_logo from "assets/images/web3Boilerplate_logo.png";
+import ConnectAccount from "components/Account/ConnectAccount";
+import ChainSelector from "components/ChainSelector";
+import DisplayPane from "components/displayPane/DisplayPane";
+import "App.css";
+import { useWindowWidthAndHeight } from "hooks";
 
 const { Header, Footer } = Layout;
 

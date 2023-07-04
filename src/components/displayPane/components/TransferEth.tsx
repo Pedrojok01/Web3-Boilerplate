@@ -4,8 +4,9 @@ import { useWeb3React } from "@web3-react/core";
 import { Button, InputNumber, message } from "antd";
 import { ethers } from "ethers";
 
-import { useNativeBalance } from "../../../hooks/useNativeBalance";
-import { parseBigNumberToFloat } from "../../../utils/formatters";
+import { useNativeBalance } from "hooks/useNativeBalance";
+import { parseBigNumberToFloat } from "utils/formatters";
+
 import AddressInput from "../../AddressInput";
 
 const styles = {

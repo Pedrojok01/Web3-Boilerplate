@@ -1,8 +1,9 @@
 import { useWeb3React } from "@web3-react/core";
 import { Divider } from "antd";
 
+import { useWindowWidthAndHeight } from "hooks";
+
 import { Infos, SignMessage, Status, TransferEth } from "./components";
-import { useWindowWidthAndHeight } from "../../hooks/useWindowWidthAndHeight";
 
 const styles = {
   container: {

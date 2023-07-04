@@ -1,9 +1,8 @@
 import { useWeb3React, Web3ReactHooks } from "@web3-react/core";
 
-import { CHAINS } from "../../../constants/networks";
-import { useNativeBalance } from "../../../hooks/useNativeBalance";
-import { useWindowWidthAndHeight } from "../../../hooks/useWindowWidthAndHeight";
-import { getEllipsisTxt, parseBigNumberToFloat } from "../../../utils/formatters";
+import { CHAINS } from "constants/networks";
+import { useNativeBalance, useWindowWidthAndHeight } from "hooks";
+import { getEllipsisTxt, parseBigNumberToFloat } from "utils/formatters";
 
 const styles = {
   display: {

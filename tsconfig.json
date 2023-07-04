@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "target": "es2021",
     "rootDir": "./src",
     "outDir": "./dist",
     "removeComments": true,
     "noEmitOnError": true,
     "sourceMap": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,8 +27,12 @@
     "jsx": "react-jsx",
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

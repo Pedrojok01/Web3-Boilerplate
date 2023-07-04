@@ -18,7 +18,7 @@ import { parseBigNumberToFloat } from "../utils/formatters";
  * const {data: allowance} = useAllowance(account)
  * console.log(balance)
  */
-export function useToken(address: string) {
+export const useToken = (address: string) => {
   const contract = useContract<GenericERC20>(address, GenericERC20Abi);
   const { account } = useWeb3React();
 
@@ -81,7 +81,7 @@ export function useToken(address: string) {
     useName,
     contract
   };
-}
+};
 
 /**
  *
@@ -107,16 +107,4 @@ export function useBalance(address: string) {
 export function useAllowance(address: string, spender: string, owner?: string) {
   const { useAllowance } = useToken(address);
   return useAllowance(spender, owner);
-}
-
-export function useNativeBalance() {
-  const { account, provider } = useWeb3React();
-
-  return useSWR(provider ? ["/native/balance/", account] : null, async (_: Array<string | number>, account: string) => {
-    if (account && provider) {
-      const bal = await provider.getBalance(account);
-      return parseBigNumberToFloat(bal, 18);
-    }
-    return undefined;
-  });
 }
