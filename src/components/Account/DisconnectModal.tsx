@@ -2,8 +2,8 @@ import { SelectOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
 import { Button, Card, Modal } from "antd";
 
-import { getExplorer } from "../../constants/networks";
 import Address from "./Address";
+import { getExplorer } from "../../constants/networks";
 
 interface ConnectModalProps {
   isModalOpen: boolean;
@@ -30,7 +30,7 @@ const DisconnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalO
       <Card
         style={{
           marginTop: "10px",
-          borderRadius: "1rem"
+          borderRadius: "10px"
         }}
         bodyStyle={{ padding: "15px" }}
       >
@@ -50,7 +50,7 @@ const DisconnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalO
         style={{
           width: "100%",
           marginTop: "10px",
-          borderRadius: "0.5rem",
+          borderRadius: "10px",
           fontSize: "16px",
           fontWeight: "500"
         }}

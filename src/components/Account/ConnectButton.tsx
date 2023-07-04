@@ -6,7 +6,9 @@ const styles = {
     cursor: "pointer",
     paddingBlock: "5px",
     marginBottom: "12px",
-    boxShadow: "0 4px 4px rgba(0,0,0,.25),0 0 5px rgba(0,0,0,.25),inset 0 0 10px #fff"
+    boxShadow: "0 4px 4px rgba(0,0,0,.25),0 0 5px rgba(0,0,0,.25),inset 0 0 10px #fff",
+    border: "none",
+    borderRadius: "10px"
   },
   connectButtonText: {
     fontWeight: "600",

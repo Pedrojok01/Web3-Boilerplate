@@ -7,8 +7,8 @@
 }
 
 .ant-btn-primary {
-background-color: black !important;
-border: none !important;
+  background-color: black !important;
+  border: none !important;
 }
 
 .ant-btn:hover {
@@ -16,11 +16,11 @@ border: none !important;
 }
 
 .ant-dropdown {
-  border-radius: 7px !important;
+  border-radius: 10px !important;
 }
 
 .ant-dropdown-menu {
-  border-radius: 7px !important;
+  border-radius: 10px !important;
 }
 
 .ant-dropdown-menu-item,

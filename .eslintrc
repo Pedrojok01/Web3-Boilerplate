@@ -4,7 +4,10 @@
       "version": "detect"
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {
@@ -14,19 +17,20 @@
   },
   "env": {
     "browser": true,
-    "es2021": true,
-    "node": true,
-    "jest": true
+    "es2021": true
   },
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "import", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "import",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "extends": [
     "eslint:recommended",
-    "plugin:import/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -34,12 +38,15 @@
     "ecmaVersion": 12
   },
   "rules": {
-    "no-console": 1, // Means warning
-    "prettier/prettier": 2, // Means error
+    "no-console": "off", // Means warning
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
         "pathGroups": [
           {
             "pattern": "react",
@@ -47,7 +54,9 @@
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",

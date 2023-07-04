@@ -22,7 +22,7 @@ const styles = {
     height: "42px",
     minWidth: "145px",
     border: "0",
-    borderRadius: "7px"
+    borderRadius: "10px"
   }
 };
 
@@ -37,7 +37,7 @@ function ChainSelector() {
   const labelToShow = (logo: string, alt: string) => {
     return (
       <div style={{ display: "inline-flex", alignItems: "center" }}>
-        <img src={logo} alt={alt} style={{ width: "25px", height: "25px", borderRadius: "4px", marginRight: "5px" }} />
+        <img src={logo} alt={alt} style={{ width: "25px", height: "25px", borderRadius: "10px", marginRight: "5px" }} />
       </div>
     );
   };

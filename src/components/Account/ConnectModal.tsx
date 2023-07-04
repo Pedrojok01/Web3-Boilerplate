@@ -1,12 +1,12 @@
 import { Modal, Divider } from "antd";
 
+import ConnectButton from "./ConnectButton";
 import coinbase_Logo from "../../assets/images/coinbase_Logo.png";
 import metamask_Logo from "../../assets/svg/metamask_Logo.svg";
 import walletconnect_Logo from "../../assets/svg/walletconnect_Logo.svg";
 import { coinbaseWallet } from "../../connectors/coinbaseWallet";
 import { metaMask } from "../../connectors/metaMask";
 import { walletConnect } from "../../connectors/walletConnect";
-import ConnectButton from "./ConnectButton";
 
 const styles = {
   modalTitle: {
@@ -55,7 +55,7 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen
       footer={null}
       onCancel={() => setIsModalOpen(false)}
       bodyStyle={{
-        width: "320px",
+        width: "300px",
         margin: "auto",
         padding: "15px",
         fontSize: "17px",

@@ -12,7 +12,7 @@ const styles = {
     display: "flex",
     gap: "5px",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: "9px",
+    borderRadius: "10px",
     alignItems: "center"
   }
 };

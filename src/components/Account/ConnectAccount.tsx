@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Button } from "antd";
 
+import ConnectModal from "./ConnectModal";
+import DisconnectModal from "./DisconnectModal";
 import { metaMask } from "../../connectors/metaMask";
 import { walletConnect } from "../../connectors/walletConnect";
 import { getEllipsisTxt } from "../../utils/formatters";
 import Jazzicons from "../Jazzicons";
-import ConnectModal from "./ConnectModal";
-import DisconnectModal from "./DisconnectModal";
 
 const styles = {
   account: {
@@ -18,7 +18,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     width: "fit-content",
-    borderRadius: "7px",
+    borderRadius: "10px",
     backgroundColor: "black",
     cursor: "pointer"
   },

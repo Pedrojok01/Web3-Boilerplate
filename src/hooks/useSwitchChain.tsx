@@ -1,6 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { Network } from "@web3-react/network";
-import { WalletConnect } from "@web3-react/walletconnect";
+import { WalletConnect } from "@web3-react/walletconnect-v2";
 
 import { getAddChainParameters } from "../constants/networks";
 

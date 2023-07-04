@@ -1,8 +1,8 @@
 import { useWeb3React } from "@web3-react/core";
 import { Divider } from "antd";
 
-import { useWindowWidthAndHeight } from "../../hooks/useWindowWidthAndHeight";
 import { Infos, SignMessage, Status, TransferEth } from "./components";
+import { useWindowWidthAndHeight } from "../../hooks/useWindowWidthAndHeight";
 
 const styles = {
   container: {
@@ -13,7 +13,7 @@ const styles = {
     textAlign: "center",
     margin: "auto",
     padding: "30px 0",
-    borderRadius: "20px"
+    borderRadius: "10px"
   },
   title: {
     color: "black",
