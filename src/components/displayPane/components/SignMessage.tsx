@@ -45,6 +45,7 @@ const SignMessage: FC = (): ReactElement => {
       if (provider) {
         try {
           const signature = await provider.getSigner(account)._signTypedData(domain, types, authMessage);
+
           message.info(`Success!\n\n${signature}`);
         } catch (error) {
           if (typeof error === "string") {
