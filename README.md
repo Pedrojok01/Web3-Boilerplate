@@ -13,6 +13,10 @@
 
 </div>
 
+## Update:
+
+- 2023-07: Upgrade all dependencies + clean folder structure + improve code readability.
+
 ## Disclaimer
 
 1. This is a work in progress...

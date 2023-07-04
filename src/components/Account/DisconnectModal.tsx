@@ -2,8 +2,9 @@ import { SelectOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
 import { Button, Card, Modal } from "antd";
 
+import { getExplorer } from "data/networks";
+
 import Address from "./Address";
-import { getExplorer } from "../../data/constants/networks";
 
 interface ConnectModalProps {
   isModalOpen: boolean;

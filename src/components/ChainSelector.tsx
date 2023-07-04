@@ -8,7 +8,7 @@ import type { MenuProps } from "antd";
 import ethereum_Logo from "assets/images/ethereum_Logo.png";
 import polygon_logo from "assets/images/polygon_logo.png";
 import bsc_Logo from "assets/svg/bsc_Logo.svg";
-import { chainIds } from "data/constants/chainIds";
+import { chainIds } from "data/chainIds";
 import { useSwitchChain } from "hooks";
 
 const styles = {
@@ -72,7 +72,7 @@ const ChainSelector: FC = () => {
   }, [chainId]);
 
   const onClick: MenuProps["onClick"] = async ({ key }) => {
-    await switchChain(parseInt(key)).catch((error) => {
+    await switchChain(Number(key)).catch((error) => {
       console.error(`"Failed to switch chains: " ${error}`);
     });
   };

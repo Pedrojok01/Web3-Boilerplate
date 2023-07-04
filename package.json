@@ -30,6 +30,7 @@
     "swr": "2.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/jest": "29.5.2",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",

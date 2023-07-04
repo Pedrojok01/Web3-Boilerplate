@@ -20,13 +20,11 @@ const styles = {
 const CustomFooter: FC = () => {
   return (
     <Footer style={styles.footer}>
-      <div style={{ display: "block" }}>
-        Please, leave a ⭐️ on this{" "}
-        <a href="https://github.com/Pedrojok01/Web3-Boilerplate" target="_blank" rel="noopener noreferrer">
-          boilerplate
-        </a>{" "}
-        if you like it!
-      </div>
+      Please, leave a ⭐️ on this{" "}
+      <a href="https://github.com/Pedrojok01/Web3-Boilerplate" target="_blank" rel="noopener noreferrer">
+        boilerplate
+      </a>{" "}
+      if you like it!
     </Footer>
   );
 };
