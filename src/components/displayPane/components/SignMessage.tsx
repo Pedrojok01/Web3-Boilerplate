@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, SetStateAction, useState } from "react";
+import { FC, MouseEvent, ReactElement, SetStateAction, useState } from "react";
 
 import { useWeb3React } from "@web3-react/core";
 import { Button, Input, message } from "antd";
@@ -9,7 +9,7 @@ const styles = {
   }
 } as const;
 
-const SignMessage: React.FC = (): ReactElement => {
+const SignMessage: FC = (): ReactElement => {
   const { account, provider, chainId } = useWeb3React();
   const [messageAuth, setMessageAuth] = useState<string>("");
 
@@ -17,7 +17,7 @@ const SignMessage: React.FC = (): ReactElement => {
     setMessageAuth(e.target.value);
   };
 
-  function handleSignMessage(event: MouseEvent<HTMLButtonElement>): void {
+  function handleSignMessage(event: MouseEvent): void {
     event.preventDefault();
 
     if (!provider || !account) {

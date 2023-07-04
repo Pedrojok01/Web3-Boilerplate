@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 
 import { DownOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
@@ -8,6 +8,7 @@ import type { MenuProps } from "antd";
 import ethereum_Logo from "../assets/images/ethereum_Logo.png";
 import polygon_logo from "../assets/images/polygon_logo.png";
 import bsc_Logo from "../assets/svg/bsc_Logo.svg";
+import { chainIds } from "../constants/chainIds";
 import { useSwitchChain } from "../hooks/useSwitchChain";
 
 const styles = {
@@ -28,7 +29,7 @@ const styles = {
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-function ChainSelector() {
+const ChainSelector: FC = () => {
   const switchChain = useSwitchChain();
   const { chainId, isActive } = useWeb3React();
   const [selected, setSelected] = useState<MenuItem>();
@@ -42,34 +43,38 @@ function ChainSelector() {
     );
   };
 
+  const items: MenuProps["items"] = useMemo(
+    () => [
+      { label: "Ethereum", key: chainIds.ethereum, icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
+      { label: "Goerli Testnet", key: chainIds.goerli, icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
+      { label: "Polygon", key: chainIds.polygon, icon: labelToShow(polygon_logo, "Polygon_logo") },
+      { label: "Mumbai", key: chainIds.mumbai, icon: labelToShow(polygon_logo, "Polygon_logo") },
+      { label: "BNB Chain", key: chainIds.bsc, icon: labelToShow(bsc_Logo, "BNB_logo") },
+      { label: "BNB Testnet", key: chainIds.bsctest, icon: labelToShow(bsc_Logo, "BNB_logo") }
+    ],
+    []
+  );
+
   useEffect(() => {
-    if (!chainId) return undefined;
+    if (!chainId) return;
+
+    let selectedLabel;
     if (chainId === 1 || chainId === 5) {
-      setLabel(labelToShow(ethereum_Logo, "Ethereum_logo"));
+      selectedLabel = labelToShow(ethereum_Logo, "Ethereum_logo");
     } else if (chainId === 137 || chainId === 80001) {
-      setLabel(labelToShow(polygon_logo, "Polygon_logo"));
-    } else setLabel(labelToShow(bsc_Logo, "BNB_logo"));
-    return;
-  }, [chainId]);
+      selectedLabel = labelToShow(polygon_logo, "Polygon_logo");
+    } else {
+      selectedLabel = labelToShow(bsc_Logo, "BNB_logo");
+    }
 
-  const items: MenuProps["items"] = [
-    { label: "Ethereum", key: "1", icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
-    { label: "Goerli Testnet", key: "5", icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
-    { label: "Polygon", key: "137", icon: labelToShow(polygon_logo, "Polygon_logo") },
-    { label: "Mumbai", key: "80001", icon: labelToShow(polygon_logo, "Polygon_logo") },
-    { label: "BNB Chain", key: "56", icon: labelToShow(bsc_Logo, "BNB_logo") },
-    { label: "BNB Testnet", key: "97", icon: labelToShow(bsc_Logo, "BNB_logo") }
-  ];
-
-  useEffect(() => {
-    if (!chainId) return undefined;
+    setLabel(selectedLabel);
     setSelected(items.find((item) => item?.key === chainId.toString()));
-    return;
   }, [chainId]);
 
   const onClick: MenuProps["onClick"] = async ({ key }) => {
-    await switchChain(parseInt(key));
-    window.location.reload();
+    await switchChain(parseInt(key)).catch((error) => {
+      console.error(`"Failed to switch chains: " ${error}`);
+    });
   };
 
   if (!chainId || !isActive) return null;
@@ -91,6 +96,6 @@ function ChainSelector() {
       </Dropdown>
     </div>
   );
-}
+};
 
 export default ChainSelector;
