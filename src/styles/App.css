@@ -76,3 +76,11 @@ body {
   min-width: 350px;
   margin-inline: auto;
 }
+
+.ant-modal-mask {
+  z-index: 40 !important;
+}
+
+.ant-modal-wrap {
+  z-index: 50 !important;
+}

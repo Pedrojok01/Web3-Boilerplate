@@ -3,7 +3,8 @@ import React, { CSSProperties, useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Skeleton } from "antd";
 
-import { getEllipsisTxt } from "../../utils/formatters";
+import { getEllipsisTxt } from "utils/formatters";
+
 import Jazzicons from "../Jazzicons";
 
 const styles = {

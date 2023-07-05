@@ -1,14 +1,16 @@
+import { useCallback } from "react";
+
 import { Modal, Divider, message } from "antd";
 
+import coinbase_Logo from "assets/images/coinbase_Logo.png";
+import metamask_Logo from "assets/svg/metamask_Logo.svg";
+import walletconnect_Logo from "assets/svg/walletconnect_Logo.svg";
+import { hooks as coinbaseWallethooks, coinbaseWallet } from "connectors/coinbaseWallet";
 import { getName } from "connectors/getConnectorName";
+import { hooks as metaMaskhooks, metaMask } from "connectors/metaMask";
+import { hooks as walletConnecthooks, walletConnect } from "connectors/walletConnect";
 
 import ConnectButton from "./ConnectButton";
-import coinbase_Logo from "../../assets/images/coinbase_Logo.png";
-import metamask_Logo from "../../assets/svg/metamask_Logo.svg";
-import walletconnect_Logo from "../../assets/svg/walletconnect_Logo.svg";
-import { coinbaseWallet } from "../../connectors/coinbaseWallet";
-import { metaMask } from "../../connectors/metaMask";
-import { walletConnect } from "../../connectors/walletConnect";
 
 const styles = {
   modalTitle: {
@@ -26,8 +28,16 @@ interface ConnectModalProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const { useIsActivating: useMMIsActivating } = metaMaskhooks;
+const { useIsActivating: useWCIsActivating } = walletConnecthooks;
+const { useIsActivating: useCBIsActivating } = coinbaseWallethooks;
+
 const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen }) => {
-  const activateConnector = async (label: string) => {
+  const isMMActivating = useMMIsActivating();
+  const isWCActivating = useWCIsActivating();
+  const isCBActivating = useCBIsActivating();
+
+  const activateConnector = useCallback(async (label: string) => {
     try {
       switch (label) {
         case "MetaMask":
@@ -48,10 +58,17 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen
         default:
           break;
       }
-    } catch (error: any) {
-      message.error(error.message ?? error);
+    } catch (error) {
+      let msg;
+      if (error instanceof Error) {
+        msg = error.message;
+      } else if (typeof error === "string") {
+        msg = error;
+      }
+      message.error(msg ?? "Failed to connect wallet");
     }
-  };
+  }, []);
+
   return (
     <Modal
       open={isModalOpen}
@@ -62,24 +79,32 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen
         margin: "auto",
         padding: "15px",
         fontSize: "17px",
-        fontWeight: "500"
+        fontWeight: "500",
+        zIndex: 50
       }}
     >
       <div style={styles.modalTitle}>Connect Your Wallet</div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <ConnectButton label="MetaMask" image={metamask_Logo} onClick={() => activateConnector("MetaMask")} />
+        <ConnectButton
+          label="MetaMask"
+          image={metamask_Logo}
+          onClick={() => activateConnector("MetaMask")}
+          loading={isMMActivating}
+        />
 
         <ConnectButton
           label="WalletConnect"
           image={walletconnect_Logo}
           onClick={() => activateConnector("WalletConnect")}
+          loading={isWCActivating}
         />
 
         <ConnectButton
           label="Coinbase Wallet"
           image={coinbase_Logo}
           onClick={() => activateConnector("Coinbase Wallet")}
+          loading={isCBActivating}
         />
         <Divider />
         <div style={{ margin: "auto", fontSize: "15px", marginBottom: "15px" }}>

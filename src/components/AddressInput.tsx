@@ -4,8 +4,9 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useWeb3React } from "@web3-react/core";
 import { Input, InputRef } from "antd";
 
+import { getEllipsisTxt } from "utils/formatters";
+
 import Jazzicons from "./Jazzicons";
-import { getEllipsisTxt } from "../utils/formatters";
 
 export interface AddressInputProps {
   address?: string;

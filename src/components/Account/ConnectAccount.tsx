@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { useWeb3React } from "@web3-react/core";
 import { Button } from "antd";
 
+import { metaMask } from "connectors/metaMask";
+import { walletConnect } from "connectors/walletConnect";
 import { theme } from "styles/theme";
+import { getEllipsisTxt } from "utils/formatters";
 
 import ConnectModal from "./ConnectModal";
 import DisconnectModal from "./DisconnectModal";
-import { metaMask } from "../../connectors/metaMask";
-import { walletConnect } from "../../connectors/walletConnect";
-import { getEllipsisTxt } from "../../utils/formatters";
 import Jazzicons from "../Jazzicons";
 
 const styles = {
@@ -58,7 +58,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
 
-  const disconnect = async () => {
+  const disconnect = useCallback(async () => {
     const connector = metaMask || walletConnect;
     setIsModalVisible(false);
     setIsAuthModalOpen(false);
@@ -73,7 +73,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
       // @ts-expect-error close can be returned by wallet
       await connector.close();
     }
-  };
+  }, []);
 
   return (
     <>
