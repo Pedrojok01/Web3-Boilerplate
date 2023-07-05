@@ -15,7 +15,8 @@ const styles = {
     textAlign: "center",
     margin: "auto",
     padding: "30px 0",
-    borderRadius: "10px"
+    borderRadius: "10px",
+    boxShadow: "8px 8px 8px rgba(0, 0, 0, 0.4)"
   },
   title: {
     color: theme.colors.black,
