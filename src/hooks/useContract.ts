@@ -13,7 +13,8 @@ function getContract<T = Contract>(address: string, abi: ContractInterface, prov
 
 // heavily inspired by uniswaps interface, thanks Noah, great work!
 export function useContract<Contract>(address: string, abi: ContractInterface) {
-  const signerOrProvider = useSignerOrProvider();
+  const { provider, signer } = useSignerOrProvider();
+  const signerOrProvider = signer ?? provider;
 
   if (!isAddress(address) || address === AddressZero) {
     throw Error(`Invalid 'address' parameter '${address}'.`);

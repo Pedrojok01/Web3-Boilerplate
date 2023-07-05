@@ -16,7 +16,12 @@
 
 ## Update:
 
-- 2023-07: Upgrade all dependencies + clean folder structure + improve code readability.
+2023-07:
+
+- Upgrade all packages dependencies;
+- Add support for Wallet-Connect v2;
+- Clean folder structure;
+- Improve code readability.
 
 ## Disclaimer
 

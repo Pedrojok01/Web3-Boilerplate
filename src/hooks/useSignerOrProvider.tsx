@@ -1,15 +1,23 @@
 import { useMemo } from "react";
 
+import type { Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
+import type { Signer } from "ethers";
 
-export function useSignerOrProvider() {
-  const { provider } = useWeb3React();
+interface SignerOrProvider {
+  provider: Provider | undefined;
+  signer: Signer | undefined;
+}
+
+export const useSignerOrProvider = (): SignerOrProvider => {
+  const { provider, account } = useWeb3React();
 
   return useMemo(() => {
-    if (provider?.["getSigner"]) {
-      return provider.getSigner();
-    } else {
-      return provider;
+    let signer;
+    if (provider?.getSigner) {
+      signer = provider.getSigner(account);
     }
+
+    return { provider, signer };
   }, [provider]);
-}
+};

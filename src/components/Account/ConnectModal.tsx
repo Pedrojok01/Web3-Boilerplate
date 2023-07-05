@@ -30,19 +30,16 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen
       case "MetaMask":
         await metaMask.activate();
         window.localStorage.setItem("connectorId", "injected");
-
         break;
 
       case "WalletConnect":
         await walletConnect.activate();
         window.localStorage.setItem("connectorId", "wallet_connect");
-
         break;
 
       case "Coinbase Wallet":
         await coinbaseWallet.activate();
         window.localStorage.setItem("connectorId", "injected");
-
         break;
 
       default:
