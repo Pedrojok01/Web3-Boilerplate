@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { Button, InputNumber } from "antd";
 
-import { useNativeBalance } from "hooks/useNativeBalance";
-import { useWriteContract } from "hooks/useWriteContract";
+import { useNativeBalance, useWriteContract } from "hooks";
 import { parseBigNumberToFloat } from "utils/formatters";
 
 import AddressInput from "../../AddressInput";
@@ -18,7 +17,7 @@ const styles = {
 
 const TransferEth: React.FC = () => {
   const { account, provider } = useWeb3React();
-  const { transferNative } = useWriteContract();
+  const { loading, transferNative } = useWriteContract();
   const balance = useNativeBalance(provider, account);
   const [amount, setAmount] = useState<number | null>();
   const [receiver, setReceiver] = useState<string>();
@@ -45,7 +44,7 @@ const TransferEth: React.FC = () => {
         />
 
         <div style={styles.buttonTransfer}>
-          <Button type="primary" shape="round" onClick={handleTransfer}>
+          <Button type="primary" shape="round" onClick={handleTransfer} loading={loading}>
             Transfer
           </Button>
         </div>

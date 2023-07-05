@@ -2,7 +2,7 @@ import { FC, MouseEvent, ReactElement, SetStateAction, useState } from "react";
 
 import { Button, Input } from "antd";
 
-import { useWriteContract } from "hooks/useWriteContract";
+import { useWriteContract } from "hooks";
 
 const styles = {
   buttonSign: {
@@ -11,7 +11,7 @@ const styles = {
 } as const;
 
 const SignMessage: FC = (): ReactElement => {
-  const { signMessage } = useWriteContract();
+  const { loading, signMessage } = useWriteContract();
   const [messageAuth, setMessageAuth] = useState<string>("");
 
   const handleMessageChange = (e: { target: { value: SetStateAction<string> } }) => {
@@ -33,7 +33,7 @@ const SignMessage: FC = (): ReactElement => {
         type="textarea"
         placeholder="Input message to sign"
       />
-      <Button type="primary" shape="round" style={styles.buttonSign} onClick={handleSignMessage}>
+      <Button type="primary" shape="round" style={styles.buttonSign} onClick={handleSignMessage} loading={loading}>
         Sign Message
       </Button>
     </div>
