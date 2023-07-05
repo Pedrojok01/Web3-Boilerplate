@@ -1,4 +1,6 @@
-import { Modal, Divider } from "antd";
+import { Modal, Divider, message } from "antd";
+
+import { getName } from "connectors/getConnectorName";
 
 import ConnectButton from "./ConnectButton";
 import coinbase_Logo from "../../assets/images/coinbase_Logo.png";
@@ -26,24 +28,28 @@ interface ConnectModalProps {
 
 const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen }) => {
   const activateConnector = async (label: string) => {
-    switch (label) {
-      case "MetaMask":
-        await metaMask.activate();
-        window.localStorage.setItem("connectorId", "injected");
-        break;
+    try {
+      switch (label) {
+        case "MetaMask":
+          await metaMask.activate();
+          window.localStorage.setItem("connectorId", getName(metaMask));
+          break;
 
-      case "WalletConnect":
-        await walletConnect.activate();
-        window.localStorage.setItem("connectorId", "wallet_connect");
-        break;
+        case "WalletConnect":
+          await walletConnect.activate();
+          window.localStorage.setItem("connectorId", getName(walletConnect));
+          break;
 
-      case "Coinbase Wallet":
-        await coinbaseWallet.activate();
-        window.localStorage.setItem("connectorId", "injected");
-        break;
+        case "Coinbase Wallet":
+          await coinbaseWallet.activate();
+          window.localStorage.setItem("connectorId", getName(coinbaseWallet));
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
+    } catch (error: any) {
+      message.error(error.message ?? error);
     }
   };
   return (

@@ -40,7 +40,7 @@
   "rules": {
     "no-console": "off", // Means warning
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": [
           "builtin",

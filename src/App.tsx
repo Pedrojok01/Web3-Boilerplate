@@ -1,3 +1,5 @@
+import { Buffer } from "buffer";
+
 import { Layout } from "antd";
 
 import background from "assets/images/background.jpg";
@@ -19,6 +21,8 @@ const styles = {
 } as const;
 
 function App() {
+  if (!window.Buffer) window.Buffer = Buffer;
+
   return (
     <Layout style={styles.layout}>
       <CustomHeader />
