@@ -20,13 +20,13 @@
 
 - Upgrade all packages dependencies;
 - Add support for Wallet-Connect v2;
-- Clean folder structure;
+- Clean code & folders structure;
 - Improve code readability.
 
 ## Disclaimer
 
 1. This is a work in progress...
-2. Just getting started with Typescript and no React expert on top of that, so any contribution/improvment pull-request is more than welcomed!
+2. No Typescript expert and no React expert either, so any contribution/improvement pull-request is welcomed!
 
 ## Description
 
@@ -54,21 +54,31 @@ Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplat
 
 ### Once your config is ready, create a new repo, open your favorite code editor, and clone the repo with the following cmd:
 
-```
+```bash
 git clone https://github.com/Pedrojok01/Web3-Boilerplate.git .
 ```
 
 ### Install all package dependancies by running:
 
-```
+```bash
 yarn install
 ```
 
 <b>IMPORTANT: Double check your package.json to make sure you've installed the exact same version for all @web3-react packages. Since the version 8+ is still in beta, it may not be automatically installed.</b>
 
+### Add your API keys in the .env file:
+
+Create a .env file at the root of your project and copy the content of the .env.example file into it. Then, fill in the following variables:
+
+```js
+REACT_APP_INFURA_KEY = "your API key here";
+...
+REACT_APP_WALLETCONNECT_PROJECT_ID = "Project id needed for WalletConnect v2";
+```
+
 ### start the web3-boilerplate:
 
-```
+```bash
 yarn start
 ```
 
@@ -76,7 +86,9 @@ yarn start
 
 - [x] Web3 Wallet (Metamask / Wallet connect / Coinbase)
 - [x] Chain selector
-- [ ] Hooks to query user's Native Balance / Token Balances
+- [x] Wallet balance
+- [x] Sign Messages & Transfer Native
+- [ ] Hook to query user's Token Balances
 - [ ] Hook to query user's NFTs
 
 <br></br>

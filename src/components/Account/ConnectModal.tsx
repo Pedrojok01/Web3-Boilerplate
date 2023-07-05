@@ -59,13 +59,7 @@ const ConnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalOpen
           break;
       }
     } catch (error) {
-      let msg;
-      if (error instanceof Error) {
-        msg = error.message;
-      } else if (typeof error === "string") {
-        msg = error;
-      }
-      message.error(msg ?? "Failed to connect wallet");
+      message.error("Failed to connect wallet. Please try again.");
     }
   }, []);
 
