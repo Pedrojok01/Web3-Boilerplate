@@ -38,6 +38,7 @@
     "ecmaVersion": 12
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "off", // Means warning
     "import/order": [
       "warn",
