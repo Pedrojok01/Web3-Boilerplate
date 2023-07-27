@@ -20,6 +20,15 @@ body {
   text-align: center;
 }
 
+.connector-button:hover {
+  box-shadow: 0px 0px 7px 7px rgba(30, 136, 229, 0.2) !important;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
 /* ANTD OVERRIDE */
 
 .ant-btn-primary {

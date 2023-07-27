@@ -30,7 +30,14 @@ interface ConnectButtonProps {
 
 const ConnectButton: FC<ConnectButtonProps> = ({ label, image, onClick, loading }) => {
   return (
-    <Button ghost style={styles.connectButton} key={label} onClick={onClick} loading={loading}>
+    <Button
+      ghost
+      className="connector-button"
+      style={styles.connectButton}
+      key={label}
+      onClick={onClick}
+      loading={loading}
+    >
       <Text style={styles.connectButtonText}>{label}</Text>
       <img src={image} width={32} height={32} alt="web3-wallet" />
     </Button>
