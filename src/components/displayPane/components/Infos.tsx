@@ -1,16 +1,21 @@
 import { useWeb3React, Web3ReactHooks } from "@web3-react/core";
+import { Typography } from "antd";
+const { Paragraph } = Typography;
 
 import { CHAINS } from "data/networks";
 import { useNativeBalance, useWindowWidthAndHeight } from "hooks";
-import { theme } from "styles/theme";
 import { getEllipsisTxt, parseBigNumberToFloat } from "utils/formatters";
 
 const styles = {
   display: {
-    paddingBlock: "15px"
+    paddingBlock: "0 15px",
+    display: "flex",
+    flexDirection: "column"
   },
   statusText: {
-    color: theme.colors.text,
+    fontSize: "17px"
+  },
+  statusValue: {
     fontWeight: 800
   }
 } as const;
@@ -24,37 +29,41 @@ const Infos = ({ chainId }: { chainId: ReturnType<Web3ReactHooks["useChainId"]> 
   const name = chainId ? CHAINS[chainId]?.name : undefined;
 
   return (
-    <div style={styles.display}>
-      Address:
-      {!isMobile ? (
-        <span style={styles.statusText}>{account}</span>
-      ) : (
-        <span style={styles.statusText}>{account && getEllipsisTxt(account, 4)}</span>
-      )}
-      <br></br>
-      <br></br>
-      {name ? (
-        <>
-          Chain:{" "}
-          <span style={styles.statusText}>
-            {name} ({chainId})
-          </span>
-        </>
-      ) : (
-        <>
-          Chain Id: <b>{chainId}</b>
-        </>
-      )}
-      <br></br>
-      <br></br>
-      Balance:
-      <span style={styles.statusText}>
-        {balance
-          ? `
+    <Typography style={styles.display}>
+      <Paragraph style={styles.statusText}>
+        Address:{" "}
+        {!isMobile ? (
+          <span style={styles.statusValue}>{account}</span>
+        ) : (
+          <span style={styles.statusValue}>{account && getEllipsisTxt(account, 4)}</span>
+        )}
+      </Paragraph>
+
+      <Paragraph style={styles.statusText}>
+        {name ? (
+          <>
+            Chain:{" "}
+            <span style={styles.statusValue}>
+              {name} ({chainId})
+            </span>
+          </>
+        ) : (
+          <>
+            Chain Id: <b>{chainId}</b>
+          </>
+        )}
+      </Paragraph>
+
+      <Paragraph style={styles.statusText}>
+        Balance:
+        <span style={styles.statusValue}>
+          {balance
+            ? `
           Ξ ${parseBigNumberToFloat(balance).toFixed(4)}`
-          : 0}
-      </span>
-    </div>
+            : 0}
+        </span>
+      </Paragraph>
+    </Typography>
   );
 };
 

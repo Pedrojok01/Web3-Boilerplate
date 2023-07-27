@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-import { theme } from "styles/theme";
-
 type MainContentProps = {
   children?: React.ReactNode;
 };
@@ -11,9 +9,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
-    color: theme.colors.text,
     marginTop: "100px",
-    padding: "10px",
+    padding: "50px",
     overflow: "auto"
   }
 } as const;

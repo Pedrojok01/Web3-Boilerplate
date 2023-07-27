@@ -9,7 +9,7 @@ import ethereum_Logo from "assets/images/ethereum_Logo.png";
 import polygon_logo from "assets/images/polygon_logo.png";
 import bsc_Logo from "assets/svg/bsc_Logo.svg";
 import { chainIds } from "data/chainIds";
-import { useSwitchChain } from "hooks";
+import { useSwitchChain, useWindowWidthAndHeight } from "hooks";
 
 const styles = {
   item: {
@@ -21,7 +21,6 @@ const styles = {
     display: "flex",
     alignItems: "center",
     height: "42px",
-    minWidth: "145px",
     border: "0",
     borderRadius: "10px"
   }
@@ -32,6 +31,7 @@ type MenuItem = Required<MenuProps>["items"][number];
 const ChainSelector: FC = () => {
   const switchChain = useSwitchChain();
   const { chainId, isActive } = useWeb3React();
+  const { isMobile } = useWindowWidthAndHeight();
   const [selected, setSelected] = useState<MenuItem>();
   const [label, setLabel] = useState<JSX.Element>();
 
@@ -84,8 +84,12 @@ const ChainSelector: FC = () => {
       <Dropdown menu={{ items, onClick }}>
         <Button style={{ ...styles.button, ...styles.item }}>
           {!selected && <span style={{ marginLeft: "5px" }}>Select Chain</span>}
-          {selected && (
-            <div style={{ display: "flex", alignItems: "center" }}>
+          {selected && isMobile ? (
+            <div style={{ display: "flex", alignItems: "center", minWidth: "25px" }}>
+              <span style={{ paddingTop: "5px" }}>{label}</span>
+            </div>
+          ) : (
+            <div style={{ display: "flex", alignItems: "center", minWidth: "100px" }}>
               <span style={{ paddingTop: "5px" }}>{label}</span>
               {/* @ts-expect-error title is a valid object*/}
               <span style={{ marginRight: "10px" }}>{selected?.label}</span>

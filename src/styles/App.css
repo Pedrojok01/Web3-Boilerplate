@@ -14,22 +14,17 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-color: white;
 }
 
 .App {
   text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 /* ANTD OVERRIDE */
 
 .ant-btn-primary {
   background-color: black !important;
-  border: none !important;
+  border: 1px solid rgba(152, 161, 192, 0.24) !important;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.4);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -39,7 +34,6 @@ body {
 }
 
 .ant-btn:hover {
-  transform: scale(1.02) !important;
   box-shadow: 0px 0px 12px 12px rgba(30, 136, 229, 0.2);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -60,7 +54,6 @@ body {
 .ant-dropdown-menu-submenu-title {
   height: 42px;
   gap: 5px;
-  color: black !important;
   font-size: 15px !important;
   font-weight: 500 !important;
 }

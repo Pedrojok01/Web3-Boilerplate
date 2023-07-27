@@ -1,28 +1,21 @@
 import { useWeb3React } from "@web3-react/core";
-import { Divider } from "antd";
+import { Divider, Typography } from "antd";
+const { Title } = Typography;
 
 import { useWindowWidthAndHeight } from "hooks";
-import { theme } from "styles/theme";
 
 import { Infos, SignMessage, Status, TransferEth } from "./components";
 
 const styles = {
   container: {
-    background: theme.colors.background,
     width: "80%",
     minWidth: "330px",
     maxWidth: "900px",
     textAlign: "center",
     margin: "auto",
-    padding: "30px 0",
+    padding: "20px 0",
     borderRadius: "10px",
-    boxShadow: "8px 8px 8px rgba(0, 0, 0, 0.4)"
-  },
-  title: {
-    color: theme.colors.black,
-    fontWeight: 600,
-    fontSize: "30px",
-    marginBottom: "10px"
+    boxShadow: "0px 0px 30px 30px rgba(30, 136, 229, 0.2)"
   },
   content: {
     width: "85%",
@@ -37,13 +30,22 @@ const styles = {
   }
 } as const;
 
-const DisplayPane: React.FC = () => {
+type DisplayPaneProps = {
+  isDarkMode: boolean;
+};
+
+const DisplayPane: React.FC<DisplayPaneProps> = ({ isDarkMode }) => {
   const { chainId, isActivating, isActive } = useWeb3React();
   const { isMobile } = useWindowWidthAndHeight();
 
   return (
-    <div style={styles.container}>
-      <div style={styles.title}>Display Info</div>
+    <div
+      style={{
+        ...styles.container,
+        border: isDarkMode ? "1px solid rgba(152, 161, 192, 0.24)" : "none"
+      }}
+    >
+      <Title>Display Info</Title>
       <div style={styles.content}>
         <Status isActivating={isActivating} isActive={isActive} />
         <Infos chainId={chainId} />

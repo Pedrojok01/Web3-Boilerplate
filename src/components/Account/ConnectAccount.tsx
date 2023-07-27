@@ -5,7 +5,6 @@ import { Button } from "antd";
 
 import { metaMask } from "connectors/metaMask";
 import { walletConnect } from "connectors/walletConnect";
-import { theme } from "styles/theme";
 import { getEllipsisTxt } from "utils/formatters";
 
 import ConnectModal from "./ConnectModal";
@@ -15,14 +14,10 @@ import Jazzicons from "../Jazzicons";
 const styles = {
   account: {
     height: "42px",
-    padding: "0 15px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit-content",
     borderRadius: "10px",
-    backgroundColor: theme.colors.black,
-    cursor: "pointer"
+    display: "inline-flex",
+    alignItems: "center",
+    border: " 1px solid rgba(152, 161, 192, 0.24)"
   },
   button: {
     height: "40px",
@@ -32,12 +27,7 @@ const styles = {
     letterSpacing: "0.2px",
     fontSize: "15px",
     margin: "20px 20px",
-    border: "none",
-    background: theme.colors.black,
-    color: theme.colors.white
-  },
-  text: {
-    color: theme.colors.white
+    border: "none"
   },
   modalTitle: {
     marginBottom: "20px",
@@ -87,12 +77,12 @@ const ConnectAccount: React.FC<WantedChain> = () => {
         </div>
       ) : (
         <>
-          <div style={styles.account} onClick={() => setIsModalVisible(true)}>
+          <Button style={styles.account} onClick={() => setIsModalVisible(true)}>
             {account && typeof account === "string" && (
-              <p style={{ marginRight: "5px", ...styles.text }}>{getEllipsisTxt(account, 6)}</p>
+              <p style={{ marginRight: "5px" }}>{getEllipsisTxt(account, 6)}</p>
             )}
             <Jazzicons seed={account} />
-          </div>
+          </Button>
 
           <DisconnectModal isModalOpen={isModalVisible} setIsModalOpen={setIsModalVisible} disconnect={disconnect} />
         </>

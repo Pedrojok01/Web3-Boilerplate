@@ -1,18 +1,16 @@
 import { Buffer } from "buffer";
 
-import { Layout } from "antd";
+import { useState } from "react";
 
-import background from "assets/images/background.jpg";
+import { Layout, ConfigProvider, theme } from "antd";
+
 import DisplayPane from "components/displayPane/DisplayPane";
 import { CustomHeader, MainContent, CustomFooter } from "layout";
+
 import "styles/App.css";
 
 const styles = {
   layout: {
-    backgroundImage: `url(${background})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
     width: "100vw",
     height: "100vh",
     overflow: "auto",
@@ -21,18 +19,24 @@ const styles = {
 } as const;
 
 function App() {
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(true);
   if (!window.Buffer) window.Buffer = Buffer;
 
   return (
-    <Layout style={styles.layout}>
-      <CustomHeader />
-
-      <MainContent>
-        <DisplayPane />
-      </MainContent>
-
-      <CustomFooter />
-    </Layout>
+    <ConfigProvider
+      theme={{
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm
+      }}
+    >
+      <Layout style={styles.layout}>
+        <CustomHeader isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <MainContent>
+          <DisplayPane isDarkMode={isDarkMode} />
+        </MainContent>
+        <CustomFooter />
+      </Layout>
+    </ConfigProvider>
   );
 }
 

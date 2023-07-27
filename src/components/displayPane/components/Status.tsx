@@ -1,13 +1,15 @@
 import type { Web3ReactHooks } from "@web3-react/core";
-
-import { theme } from "styles/theme";
+import { Typography } from "antd";
+const { Paragraph } = Typography;
 
 const styles = {
   display: {
-    paddingBlock: "15px"
+    paddingBlock: "15px 0px"
   },
   statusText: {
-    color: theme.colors.text,
+    fontSize: "17px"
+  },
+  statusValue: {
     fontWeight: 800
   }
 } as const;
@@ -19,21 +21,26 @@ const Status = ({
   isActivating: ReturnType<Web3ReactHooks["useIsActivating"]>;
   isActive: ReturnType<Web3ReactHooks["useIsActive"]>;
 }) => {
+  const statusMapping = {
+    isActivating: "🟡 Connecting",
+    isActive: "🟢 Connected",
+    default: "⚪️ Disconnected"
+  };
+
+  let status = statusMapping.default;
+  if (isActivating) {
+    status = statusMapping.isActivating;
+  } else if (isActive) {
+    status = statusMapping.isActive;
+  }
+
   return (
     <div style={styles.display}>
-      {isActivating ? (
-        <>
-          Account status: <span style={styles.statusText}>🟡 Connecting</span>
-        </>
-      ) : isActive ? (
-        <>
-          Account status: <span style={styles.statusText}>🟢 Connected</span>
-        </>
-      ) : (
-        <>
-          Account status: <span style={styles.statusText}>⚪️ Disconnected</span>
-        </>
-      )}
+      <Typography>
+        <Paragraph style={styles.statusText}>
+          Account status: <span style={styles.statusValue}>{status}</span>
+        </Paragraph>
+      </Typography>
     </div>
   );
 };
