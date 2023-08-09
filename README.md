@@ -22,6 +22,8 @@
 - Add support for Wallet-Connect v2;
 - Clean code & folders structure;
 - Improve code readability.
+- Add dark mode support
+- Add support for: Optimism, Arbitrum, zkSync & Fantom networks
 
 ## Disclaimer
 
@@ -88,6 +90,7 @@ yarn start
 - [x] Chain selector
 - [x] Wallet balance
 - [x] Sign Messages & Transfer Native
+- [x] Dark mode support
 - [ ] Hook to query user's Token Balances
 - [ ] Hook to query user's NFTs
 

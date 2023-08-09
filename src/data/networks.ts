@@ -16,6 +16,12 @@ const MATIC: AddEthereumChainParameter["nativeCurrency"] = {
   decimals: 18
 };
 
+const FTM: AddEthereumChainParameter["nativeCurrency"] = {
+  name: "Fantom",
+  symbol: "FTM",
+  decimals: 18
+};
+
 const BSC: AddEthereumChainParameter["nativeCurrency"] = {
   name: "BNB Chain",
   symbol: "BNB",
@@ -25,6 +31,7 @@ const BSC: AddEthereumChainParameter["nativeCurrency"] = {
 interface BasicChainInformation {
   chainId: string;
   urls: string[];
+  publicUrls: string[];
   name: string;
 }
 
@@ -46,7 +53,7 @@ export function getAddChainParameters(chainId: number): AddEthereumChainParamete
       chainId,
       chainName: chainInformation.name,
       nativeCurrency: chainInformation.nativeCurrency,
-      rpcUrls: chainInformation.urls,
+      rpcUrls: chainInformation.publicUrls,
       blockExplorerUrls: chainInformation.blockExplorerUrls
     };
   } else {
@@ -77,7 +84,8 @@ export const CHAINS: {
       pocketNetwork ? `https://eth-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
       "https://rpc.ankr.com/eth",
       "https://cloudflare-eth.com"
-    ].filter((url) => url !== ""),
+    ].filter(Boolean),
+    publicUrls: ["https://rpc.ankr.com/eth"].filter(Boolean),
     name: "Mainnet",
     nativeCurrency: ETH,
     blockExplorerUrls: ["https://etherscan.io"]
@@ -89,10 +97,61 @@ export const CHAINS: {
       alchemyKey ? `https://eth-goerli.g.alchemy.com/v2/${alchemyKey}` : "",
       pocketNetwork ? `https://eth-goerli.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
       "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
-    ].filter((url) => url !== ""),
-    name: "Görli",
+    ].filter(Boolean),
+    publicUrls: ["https://rpc.ankr.com/eth_goerli"].filter(Boolean),
+    name: "Goerli",
     nativeCurrency: ETH,
     blockExplorerUrls: ["https://goerli.etherscan.io/"]
+  },
+  // Optimism
+  10: {
+    chainId: "10",
+    urls: [
+      infuraKey ? `https://optimism-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      alchemyKey ? `https://opt-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://mainnet.optimism.io"
+    ].filter(Boolean),
+    publicUrls: ["https://mainnet.optimism.io"].filter(Boolean),
+    name: "OP Mainnet",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://optimistic.etherscan.io"]
+  },
+  420: {
+    chainId: "420",
+    urls: [
+      infuraKey ? `https://optimism-goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      alchemyKey ? `https://opt-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://goerli.optimism.io"
+    ].filter(Boolean),
+    publicUrls: ["https://goerli.optimism.io"].filter(Boolean),
+    name: "Optimism Goerli",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://goerli-explorer.optimism.io"]
+  },
+  // Arbitrum
+  42161: {
+    chainId: "42161",
+    urls: [
+      infuraKey ? `https://arbitrum-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      alchemyKey ? `https://arb-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://arb1.arbitrum.io/rpc"
+    ].filter(Boolean),
+    publicUrls: ["https://arb1.arbitrum.io/rpc"].filter(Boolean),
+    name: "Arbitrum One",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://arbiscan.io"]
+  },
+  421613: {
+    chainId: "421613",
+    urls: [
+      infuraKey ? `https://arbitrum-goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      alchemyKey ? `https://arb-goerli.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://goerli-rollup.arbitrum.io/rpc"
+    ].filter(Boolean),
+    publicUrls: ["https://goerli-rollup.arbitrum.io/rpc"].filter(Boolean),
+    name: "Arbitrum Goerli",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://testnet.arbiscan.io"]
   },
   // Polygon
   137: {
@@ -102,8 +161,9 @@ export const CHAINS: {
       alchemyKey ? `https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
       pocketNetwork ? `https://poly-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
       "https://polygon-rpc.com"
-    ].filter((url) => url !== ""),
-    name: "Polygon Mainnet",
+    ].filter(Boolean),
+    publicUrls: ["https://polygon-rpc.com"].filter(Boolean),
+    name: "Polygon",
     nativeCurrency: MATIC,
     blockExplorerUrls: ["https://polygonscan.com"]
   },
@@ -113,10 +173,54 @@ export const CHAINS: {
       infuraKey ? `https://polygon-mumbai.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
       alchemyKey ? `https://polygon-mumbai.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://rpc-mumbai.maticvigil.com"
-    ].filter((url) => url !== ""),
+    ].filter(Boolean),
+    publicUrls: ["https://rpc-mumbai.maticvigil.com"].filter(Boolean),
     name: "Polygon Mumbai",
     nativeCurrency: MATIC,
     blockExplorerUrls: ["https://mumbai.polygonscan.com"]
+  },
+  // zkSync
+  324: {
+    chainId: "324",
+    urls: [
+      alchemyKey ? `https://polygonzkevm-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://mainnet.era.zksync.io"
+    ].filter(Boolean),
+    publicUrls: ["https://mainnet.era.zksync.io"].filter(Boolean),
+    name: "zkSync Era",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://explorer.zksync.io"]
+  },
+  280: {
+    chainId: "280",
+    urls: [
+      alchemyKey ? `https://polygonzkevm-testnet.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://testnet.era.zksync.dev"
+    ].filter(Boolean),
+    publicUrls: ["https://testnet.era.zksync.dev"].filter(Boolean),
+    name: "zkSync Era Testnet",
+    nativeCurrency: ETH,
+    blockExplorerUrls: ["https://goerli.explorer.zksync.io"]
+  },
+  // Fantom
+  250: {
+    chainId: "250",
+    urls: [
+      infuraKey ? `https://fantom-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
+      "https://rpc.ankr.com/fantom"
+    ].filter(Boolean),
+    publicUrls: ["https://rpc.ankr.com/fantom"].filter(Boolean),
+    name: "Fantom",
+    nativeCurrency: FTM,
+    blockExplorerUrls: ["https://ftmscan.com/"]
+  },
+  4002: {
+    chainId: "4002",
+    urls: ["https://rpc.testnet.fantom.network"].filter(Boolean),
+    publicUrls: ["https://rpc.testnet.fantom.network"].filter(Boolean),
+    name: "Fantom Testnet",
+    nativeCurrency: FTM,
+    blockExplorerUrls: ["https://testnet.ftmscan.com/"]
   },
   // BSC
   56: {
@@ -125,16 +229,18 @@ export const CHAINS: {
       pocketNetwork ? `https://bsc-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
       "https://bsc-dataseed.binance.org/",
       "https://rpc.ankr.com/bsc"
-    ].filter((url) => url !== ""),
-    name: "BNB Chain",
+    ].filter(Boolean),
+    publicUrls: ["https://rpc.ankr.com/bsc"].filter(Boolean),
+    name: "BNB Smart Chain",
     nativeCurrency: BSC,
     blockExplorerUrls: ["https://bscscan.com/"]
   },
   97: {
     chainId: "97",
     urls: ["https://data-seed-prebsc-1-s1.binance.org:8545/", "https://data-seed-prebsc-1-s3.binance.org:8545/"].filter(
-      (url) => url !== ""
+      Boolean
     ),
+    publicUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"].filter(Boolean),
     name: "BNB Testnet",
     nativeCurrency: BSC,
     blockExplorerUrls: ["https://testnet.bscscan.com/"]

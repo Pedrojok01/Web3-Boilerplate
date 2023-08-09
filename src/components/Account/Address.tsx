@@ -8,13 +8,19 @@ import { getEllipsisTxt } from "utils/formatters";
 import Jazzicons from "../Jazzicons";
 
 const styles = {
-  address: {
+  addressBox: {
     height: "36px",
     display: "flex",
     gap: "5px",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: "10px",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "space-around"
+  },
+  address: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "1rem"
   }
 };
 
@@ -69,9 +75,11 @@ const Address: React.FC<AddressProps> = (props) => {
   );
 
   return (
-    <div style={{ ...styles.address, ...props.style }}>
-      {props.avatar === "left" && <Jazzicons seed={address} />}
-      <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+    <div style={{ ...styles.addressBox, ...props.style }}>
+      <div style={styles.address}>
+        {props.avatar === "left" && <Jazzicons seed={address} />}
+        <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      </div>
       {props.avatar === "right" && <Jazzicons seed={address} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
