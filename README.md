@@ -102,9 +102,12 @@ yarn start
 
 <br></br>
 
-# Enjoy!!!
+<div align="center">
+<h2> Enjoy!!!</h2>
 
 ### ⭐️ ... and don't forget to leave a star if you like it! ⭐️
+
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
