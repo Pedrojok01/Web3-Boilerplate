@@ -42,7 +42,8 @@ const DisplayPane: React.FC<DisplayPaneProps> = ({ isDarkMode }) => {
     <div
       style={{
         ...styles.container,
-        border: isDarkMode ? "1px solid rgba(152, 161, 192, 0.24)" : "none"
+        border: isDarkMode ? "1px solid rgba(152, 161, 192, 0.24)" : "none",
+        width: isMobile ? "90%" : "80%"
       }}
     >
       <Title>Display Info</Title>

@@ -5,6 +5,7 @@ import { Button } from "antd";
 
 import { metaMask } from "connectors/metaMask";
 import { walletConnect } from "connectors/walletConnect";
+import { useWindowWidthAndHeight } from "hooks";
 import { getEllipsisTxt } from "utils/formatters";
 
 import ConnectModal from "./ConnectModal";
@@ -45,6 +46,7 @@ interface WantedChain {
 
 const ConnectAccount: React.FC<WantedChain> = () => {
   const { account } = useWeb3React();
+  const { isMobile } = useWindowWidthAndHeight();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
 
@@ -79,7 +81,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
         <>
           <Button style={styles.account} onClick={() => setIsModalVisible(true)}>
             {account && typeof account === "string" && (
-              <p style={{ marginRight: "5px" }}>{getEllipsisTxt(account, 6)}</p>
+              <p style={{ marginRight: "5px" }}>{getEllipsisTxt(account, isMobile ? 3 : 6)}</p>
             )}
             <Jazzicons seed={account} />
           </Button>
