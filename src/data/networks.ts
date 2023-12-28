@@ -1,7 +1,7 @@
 import type { AddEthereumChainParameter } from "@web3-react/types";
 
 const infuraKey = process.env.REACT_APP_INFURA_KEY;
-const alchemyKey = process.env.REACT_APP_INFURA_KEY;
+const alchemyKey = infuraKey;
 const pocketNetwork = process.env.REACT_APP_POCKET_KEY;
 
 const ETH: AddEthereumChainParameter["nativeCurrency"] = {
@@ -90,24 +90,23 @@ export const CHAINS: {
     nativeCurrency: ETH,
     blockExplorerUrls: ["https://etherscan.io"]
   },
-  5: {
-    chainId: "5",
+  11155111: {
+    chainId: "11155111",
     urls: [
-      infuraKey ? `https://goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
-      alchemyKey ? `https://eth-goerli.g.alchemy.com/v2/${alchemyKey}` : "",
-      pocketNetwork ? `https://eth-goerli.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
-      "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+      infuraKey ? `https://sepolia.infura.io/v3/${infuraKey}` : "",
+      alchemyKey ? `https://eth-sepolia.g.alchemy.com/v2/${alchemyKey}` : "",
+      pocketNetwork ? `https://eth-sepolia.gateway.pokt.network/v1/lb/${pocketNetwork}` : ""
     ].filter(Boolean),
-    publicUrls: ["https://rpc.ankr.com/eth_goerli"].filter(Boolean),
-    name: "Goerli",
+    publicUrls: ["https://sepolia.infura.io/v3/", "https://rpc.sepolia.org"].filter(Boolean),
+    name: "Sepolia",
     nativeCurrency: ETH,
-    blockExplorerUrls: ["https://goerli.etherscan.io/"]
+    blockExplorerUrls: ["https://sepolia.etherscan.io"]
   },
   // Optimism
   10: {
     chainId: "10",
     urls: [
-      infuraKey ? `https://optimism-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://optimism-mainnet.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://opt-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://mainnet.optimism.io"
     ].filter(Boolean),
@@ -119,7 +118,7 @@ export const CHAINS: {
   420: {
     chainId: "420",
     urls: [
-      infuraKey ? `https://optimism-goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://optimism-goerli.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://opt-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://goerli.optimism.io"
     ].filter(Boolean),
@@ -132,7 +131,7 @@ export const CHAINS: {
   42161: {
     chainId: "42161",
     urls: [
-      infuraKey ? `https://arbitrum-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://arbitrum-mainnet.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://arb-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://arb1.arbitrum.io/rpc"
     ].filter(Boolean),
@@ -144,7 +143,7 @@ export const CHAINS: {
   421613: {
     chainId: "421613",
     urls: [
-      infuraKey ? `https://arbitrum-goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://arbitrum-goerli.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://arb-goerli.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://goerli-rollup.arbitrum.io/rpc"
     ].filter(Boolean),
@@ -157,7 +156,7 @@ export const CHAINS: {
   137: {
     chainId: "137",
     urls: [
-      infuraKey ? `https://polygon-mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://polygon-mainnet.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
       pocketNetwork ? `https://poly-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
       "https://polygon-rpc.com"
@@ -170,7 +169,7 @@ export const CHAINS: {
   80001: {
     chainId: "80001",
     urls: [
-      infuraKey ? `https://polygon-mumbai.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}` : "",
+      infuraKey ? `https://polygon-mumbai.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://polygon-mumbai.g.alchemy.com/v2/${alchemyKey}` : "",
       "https://rpc-mumbai.maticvigil.com"
     ].filter(Boolean),

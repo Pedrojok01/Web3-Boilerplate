@@ -50,7 +50,7 @@ const ChainSelector: FC = () => {
   const items: MenuProps["items"] = useMemo(
     () => [
       { label: "Ethereum", key: chainIds.ethereum, icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
-      { label: "Goerli Testnet", key: chainIds.goerli, icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
+      { label: "Sepolia Testnet", key: chainIds.sepolia, icon: labelToShow(ethereum_Logo, "Ethereum_logo") },
       { label: "Optimism", key: chainIds.optimism, icon: labelToShow(optimistim_Logo, "Optimistim_Logo") },
       { label: "Optimism Goerli", key: chainIds.optimismtest, icon: labelToShow(optimistim_Logo, "Optimistim_Logo") },
       { label: "Arbitrum", key: chainIds.arbitrum, icon: labelToShow(arbitrum_Logo, "Arbitrum_Logo") },
@@ -71,7 +71,7 @@ const ChainSelector: FC = () => {
     if (!chainId) return;
 
     let selectedLabel;
-    if (chainId === 1 || chainId === 5) {
+    if (chainId === 1 || chainId === 11155111) {
       selectedLabel = labelToShow(ethereum_Logo, "Ethereum_logo");
     } else if (chainId === 137 || chainId === 80001) {
       selectedLabel = labelToShow(polygon_logo, "Polygon_logo");
@@ -84,7 +84,7 @@ const ChainSelector: FC = () => {
     } else if (chainId === 42161 || chainId === 421613) {
       selectedLabel = labelToShow(arbitrum_Logo, "Arbitrum_Logo");
     } else {
-      selectedLabel = labelToShow(bsc_Logo, "BNB_logo");
+      selectedLabel = undefined;
     }
 
     setLabel(selectedLabel);
@@ -109,11 +109,15 @@ const ChainSelector: FC = () => {
               <span style={{ paddingTop: "5px" }}>{label}</span>
             </div>
           ) : (
-            <div style={{ display: "flex", alignItems: "center", minWidth: "100px" }}>
-              <span style={{ paddingTop: "5px" }}>{label}</span>
-              {/* @ts-expect-error title is a valid object*/}
-              <span style={{ marginRight: "10px" }}>{selected?.label}</span>
-            </div>
+            <>
+              {label && (
+                <div style={{ display: "flex", alignItems: "center", minWidth: "100px" }}>
+                  <span style={{ paddingTop: "5px" }}>{label}</span>
+                  {/*  @ts-expect-error title is a valid object */}
+                  <span style={{ marginRight: "10px" }}>{selected?.label}</span>
+                </div>
+              )}
+            </>
           )}
           <DownOutlined />
         </Button>

@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 
-import { message } from "antd";
 import { ethers } from "ethers";
 
 import { useSignerOrProvider } from "./useSignerOrProvider";
@@ -11,16 +10,16 @@ export const useWriteContract = () => {
 
   // Sign Message
   const signMessage = useCallback(
-    async (messageAuth: string): Promise<void> => {
+    async (messageAuth: string): Promise<{ success: boolean; data: string }> => {
       setLoading(true);
       const authMessage = messageAuth.length > 0 ? { Title: `${messageAuth}` } : { Title: "Hello Web3!" };
 
       try {
         const transactionHash = await signer?.signMessage(authMessage.Title);
-        message.info(`Success!\n\n${transactionHash}`);
+        return { success: true, data: transactionHash ?? "" };
       } catch (error: any) {
         const message = error.reason ?? error.message ?? error;
-        message.error(`An error occured: ${message}`);
+        return { success: false, data: message };
       } finally {
         setLoading(false);
       }
@@ -30,7 +29,10 @@ export const useWriteContract = () => {
 
   // Transfer Native Currency
   const transferNative = useCallback(
-    async (receiver: string, amount: number): Promise<void> => {
+    async (
+      receiver: string,
+      amount: number
+    ): Promise<{ success: boolean; data: ethers.providers.TransactionReceipt | undefined }> => {
       setLoading(true);
       try {
         if (!ethers.utils.isAddress(receiver)) {
@@ -48,10 +50,10 @@ export const useWriteContract = () => {
 
         const transaction = await signer?.sendTransaction(tx);
         const receipt = await transaction?.wait(2);
-        message.info(`Success!\n\nTx Hash: ${receipt?.transactionHash}`);
+        return { success: true, data: receipt };
       } catch (error: any) {
         const message = error.reason ?? error.message ?? error;
-        message.error(`An error occured: ${message}`);
+        return { success: false, data: message };
       } finally {
         setLoading(false);
       }

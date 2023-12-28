@@ -20,12 +20,7 @@ const DisconnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalO
       open={isModalOpen}
       footer={null}
       onCancel={() => setIsModalOpen(false)}
-      bodyStyle={{
-        width: "350px",
-        padding: "15px",
-        fontSize: "17px",
-        fontWeight: "500"
-      }}
+      styles={{ body: { width: "350px", padding: "15px", fontSize: "17px", fontWeight: "500" } }}
     >
       Account
       <Card

@@ -1,6 +1,6 @@
 export const chainIds = {
   ethereum: "1",
-  goerli: "5",
+  sepolia: "11155111",
   optimism: "10",
   bsc: "56",
   bsctest: "97",
