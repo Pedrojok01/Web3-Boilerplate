@@ -13,7 +13,7 @@ import zksync_Logo from "assets/images/zksync_Logo.png";
 import bsc_Logo from "assets/svg/bsc_Logo.svg";
 import optimistim_Logo from "assets/svg/optimistim_Logo.svg";
 import { chainIds } from "data/chainIds";
-import { useSwitchChain, useWindowWidthAndHeight } from "hooks";
+import { useSwitchChain, useWindowSize } from "hooks";
 
 const styles = {
   item: {
@@ -35,7 +35,7 @@ type MenuItem = Required<MenuProps>["items"][number];
 const ChainSelector: FC = () => {
   const switchChain = useSwitchChain();
   const { chainId, isActive } = useWeb3React();
-  const { isMobile } = useWindowWidthAndHeight();
+  const { isTablet } = useWindowSize();
   const [selected, setSelected] = useState<MenuItem>();
   const [label, setLabel] = useState<JSX.Element>();
 
@@ -104,7 +104,7 @@ const ChainSelector: FC = () => {
       <Dropdown menu={{ items, onClick }}>
         <Button style={{ ...styles.button, ...styles.item }}>
           {!selected && <span style={{ marginLeft: "5px" }}>Select Chain</span>}
-          {selected && isMobile ? (
+          {selected && isTablet ? (
             <div style={{ display: "flex", alignItems: "center", minWidth: "25px" }}>
               <span style={{ paddingTop: "5px" }}>{label}</span>
             </div>

@@ -8,7 +8,7 @@ import web3Boilerplate_logo from "assets/images/web3Boilerplate_logo.png";
 import web3Boilerplate_logo_dark from "assets/images/web3Boilerplate_logo_dark.png";
 import ConnectAccount from "components/Account/ConnectAccount";
 import ChainSelector from "components/ChainSelector";
-import { useWindowWidthAndHeight } from "hooks";
+import { useWindowSize } from "hooks";
 
 const { Header } = Layout;
 
@@ -39,14 +39,14 @@ type CustomHeaderProps = {
 };
 
 const CustomHeader: FC<CustomHeaderProps> = ({ isDarkMode, setIsDarkMode }) => {
-  const { isMobile } = useWindowWidthAndHeight();
+  const { isTablet } = useWindowSize();
 
   const toggleColorMode = () => {
     setIsDarkMode((previousValue) => !previousValue);
   };
 
   return (
-    <Header style={{ ...styles.header, padding: isMobile ? "15px 5px 0 5px" : "15px 20px 0 20px" }}>
+    <Header style={{ ...styles.header, padding: isTablet ? "15px 5px 0 5px" : "15px 20px 0 20px" }}>
       <Logo isDarkMode={isDarkMode} />
       <div style={styles.headerRight}>
         <ChainSelector />
@@ -71,14 +71,14 @@ type LogoProps = {
 };
 
 export const Logo: FC<LogoProps> = ({ isDarkMode }) => {
-  const { isMobile } = useWindowWidthAndHeight();
+  const { isTablet } = useWindowSize();
 
   return (
-    <div style={{ paddingTop: isMobile ? "25px" : "40px" }}>
+    <div style={{ paddingTop: isTablet ? "25px" : "40px" }}>
       <img
         src={isDarkMode ? web3Boilerplate_logo_dark : web3Boilerplate_logo}
         alt="web3Boilerplate_logo"
-        width={isMobile ? "70px" : "90px"}
+        width={isTablet ? "70px" : "90px"}
       />
     </div>
   );

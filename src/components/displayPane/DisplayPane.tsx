@@ -2,7 +2,7 @@ import { useWeb3React } from "@web3-react/core";
 import { Divider, Typography } from "antd";
 const { Title } = Typography;
 
-import { useWindowWidthAndHeight } from "hooks";
+import { useWindowSize } from "hooks";
 
 import { Infos, SignMessage, Status, TransferEth } from "./components";
 
@@ -36,14 +36,14 @@ type DisplayPaneProps = {
 
 const DisplayPane: React.FC<DisplayPaneProps> = ({ isDarkMode }) => {
   const { chainId, isActivating, isActive } = useWeb3React();
-  const { isMobile } = useWindowWidthAndHeight();
+  const { isTablet } = useWindowSize();
 
   return (
     <div
       style={{
         ...styles.container,
         border: isDarkMode ? "1px solid rgba(152, 161, 192, 0.24)" : "none",
-        width: isMobile ? "90%" : "80%"
+        width: isTablet ? "90%" : "80%"
       }}
     >
       <Title>Display Info</Title>
@@ -56,7 +56,7 @@ const DisplayPane: React.FC<DisplayPaneProps> = ({ isDarkMode }) => {
             <Divider />
             <div style={styles.action}>
               <SignMessage />
-              {!isMobile && <Divider type="vertical" style={{ fontSize: "120px !important" }} />}
+              {!isTablet && <Divider type="vertical" style={{ fontSize: "120px !important" }} />}
               <TransferEth />
             </div>
           </>

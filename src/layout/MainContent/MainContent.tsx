@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useWindowWidthAndHeight } from "hooks";
+import { useWindowSize } from "hooks";
 
 type MainContentProps = {
   children?: React.ReactNode;
@@ -26,9 +26,9 @@ const styles = {
 } as const;
 
 const MainContent: FC<MainContentProps> = ({ children }) => {
-  const { isMobile } = useWindowWidthAndHeight();
+  const { isTablet } = useWindowSize();
 
-  return <div style={isMobile ? styles.contentMobile : styles.content}>{children}</div>;
+  return <div style={isTablet ? styles.contentMobile : styles.content}>{children}</div>;
 };
 
 export default MainContent;
