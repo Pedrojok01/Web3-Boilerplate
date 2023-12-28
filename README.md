@@ -16,6 +16,13 @@
 
 ## Update:
 
+2024-01:
+
+- Upgrade all dependencies and switch to ethers v6;
+- Fix breaking changes from ethers v6 and Antd;
+- Replaced goerli testnet (soon to be deprecated) by sepolia;
+- Add VerifySignature contract on: Optimism Goerli, Fantom Opera, Fantom Testnet
+
 2023-10:
 
 - Upgrade all packages dependencies (except ethers);
@@ -31,10 +38,28 @@
 - Add dark mode support
 - Add support for: Optimism, Arbitrum, zkSync & Fantom networks
 
+## Table of Contents
+
+- [Update:](#update)
+- [Table of Contents](#table-of-contents)
+- [Disclaimer](#disclaimer)
+- [Description](#description)
+- [Built With](#built-with)
+- [Installation](#installation)
+  - [Make sure you have the following ready:](#make-sure-you-have-the-following-ready)
+  - [Once your config is ready, create a new repo, open your favorite code editor, and clone the repo with the following cmd:](#once-your-config-is-ready-create-a-new-repo-open-your-favorite-code-editor-and-clone-the-repo-with-the-following-cmd)
+  - [Install all package dependancies by running:](#install-all-package-dependancies-by-running)
+  - [Add your API keys in the .env file:](#add-your-api-keys-in-the-env-file)
+  - [start the web3-boilerplate:](#start-the-web3-boilerplate)
+- [Features:](#features)
+  - [⭐️ ... and don't forget to leave a star if you like it! ⭐️](#️--and-dont-forget-to-leave-a-star-if-you-like-it-️)
+
+
 ## Disclaimer
 
 1. Work in progress...
 2. No Typescript expert and no React expert either, so any contribution/improvement pull-request is welcomed!
+3. For a more "recent and high-level" web3 boilerplate built on [Next.js](https://nextjs.org/), [Wagmi](https://wagmi.sh/), [Viem](https://viem.sh/), and [ChakraUI](https://chakra-ui.com/), check out [Next-Web3-Boilerplate ](https://github.com/Pedrojok01/Next-Web3-Boilerplate)
 
 ## Description
 
