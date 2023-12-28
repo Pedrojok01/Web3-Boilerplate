@@ -81,7 +81,7 @@ const ChainSelector: FC = () => {
       selectedLabel = labelToShow(zksync_Logo, "zksync_Logo");
     } else if (chainId === 250 || chainId === 4002) {
       selectedLabel = labelToShow(fantom_Logo, "Fantom_Logo");
-    } else if (chainId === 42161 || chainId === 421613) {
+    } else if (chainId === 42161 || chainId === 421614) {
       selectedLabel = labelToShow(arbitrum_Logo, "Arbitrum_Logo");
     } else {
       selectedLabel = undefined;

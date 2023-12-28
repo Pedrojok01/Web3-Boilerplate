@@ -18,10 +18,10 @@
 
 2024-01:
 
-- Upgrade all dependencies and switch to ethers v6;
-- Fix breaking changes from ethers v6 and Antd;
-- Replaced goerli testnet (soon to be deprecated) by sepolia;
-- Add VerifySignature contract on: Optimism Goerli, Fantom Opera, Fantom Testnet
+- Upgrade all dependencies (still no switch to `ethers v6`, seems more and more unlikely that `@web3-react` will switch to ethers v6 anytime soon);
+- Fix Antd breaking changes;
+- Replaced `Ethereum goerli` (soon to be deprecated) by `Ethereum Sepolia` & `Arbitrum Goerli` by `Arbitrum Sepolia`;
+- Add `VerifySignature` contracts on: Optimism Goerli, Fantom Opera, Fantom Testnet
 
 2023-10:
 
@@ -140,11 +140,11 @@ yarn start
 
 [react.js]: https://img.shields.io/badge/React_v18.2-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
-[typescript]: https://img.shields.io/badge/typescript_v5.2.2-375BD2?style=for-the-badge&logo=typescript&logoColor=61DAFB
+[typescript]: https://img.shields.io/badge/typescript_v5.3.3-375BD2?style=for-the-badge&logo=typescript&logoColor=61DAFB
 [typescript-url]: https://www.typescriptlang.org/
 [web3react]: https://img.shields.io/badge/@web3react_v8.2-006600?style=for-the-badge&logo=web3-react&logoColor=4FC08D
 [web3react-url]: https://github.com/Uniswap/web3react#readme
-[antdesign]: https://img.shields.io/badge/AntDesign_v5.10.0-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
+[antdesign]: https://img.shields.io/badge/AntDesign_v5.12.5-FF0000?style=for-the-badge&logo=AntDesign&logoColor=61DAFB
 [antdesign-url]: https://ant.design/
 [prettier]: https://img.shields.io/badge/Prettier-360D3A?style=for-the-badge&logo=Prettier&logoColor=61DAFB
 [prettier-url]: https://prettier.io/

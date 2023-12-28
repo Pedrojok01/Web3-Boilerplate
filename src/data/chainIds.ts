@@ -12,5 +12,5 @@ export const chainIds = {
   arbitrum: "42161",
   mumbai: "80001",
   fantom: "250",
-  arbitrumtest: "421613"
+  arbitrumtest: "421614"
 };

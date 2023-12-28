@@ -140,17 +140,17 @@ export const CHAINS: {
     nativeCurrency: ETH,
     blockExplorerUrls: ["https://arbiscan.io"]
   },
-  421613: {
-    chainId: "421613",
+  421614: {
+    chainId: "421614",
     urls: [
-      infuraKey ? `https://arbitrum-goerli.infura.io/v3/${infuraKey}` : "",
-      alchemyKey ? `https://arb-goerli.g.alchemy.com/v2/${alchemyKey}` : "",
-      "https://goerli-rollup.arbitrum.io/rpc"
+      infuraKey ? `https://arbitrum-sepolia.infura.io/v3/${infuraKey}` : "",
+      alchemyKey ? `https://arb-sepolia.g.alchemy.com/v2/${alchemyKey}` : "",
+      "https://sepolia-rollup.arbitrum.io/rpc"
     ].filter(Boolean),
-    publicUrls: ["https://goerli-rollup.arbitrum.io/rpc"].filter(Boolean),
-    name: "Arbitrum Goerli",
+    publicUrls: ["https://sepolia-rollup.arbitrum.io/rpc"].filter(Boolean),
+    name: "Arbitrum Sepolia",
     nativeCurrency: ETH,
-    blockExplorerUrls: ["https://testnet.arbiscan.io"]
+    blockExplorerUrls: ["https://sepolia.arbiscan.io/"]
   },
   // Polygon
   137: {
