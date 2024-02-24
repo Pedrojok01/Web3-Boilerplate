@@ -5,7 +5,7 @@
 [![Forks](https://img.shields.io/github/forks/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/issues)
 [![Issues](https://img.shields.io/github/issues/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/issues)
 [![MIT License](https://img.shields.io/github/license/Pedrojok01/Web3-Boilerplate)](https://github.com/Pedrojok01/Web3-Boilerplate/blob/main/License)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue)](https://www.linkedin.com/in/pierre-e/)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/pierre-e/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3c3b76de-6191-4ab2-b2c6-a5d824f6fe2f/deploy-status)](https://app.netlify.com/sites/web3-boilerplate/deploys)
 
 <br></br>
@@ -21,7 +21,7 @@
 - Upgrade all dependencies (still no switch to `ethers v6`, seems more and more unlikely that `@web3-react` will switch to ethers v6 anytime soon);
 - Fix Antd breaking changes;
 - Replaced `Ethereum goerli` (soon to be deprecated) by `Ethereum Sepolia` & `Arbitrum Goerli` by `Arbitrum Sepolia`;
-- Add `VerifySignature` contracts on: Optimism Goerli, Fantom Opera, Fantom Testnet
+- Add `VerifySignature` contracts on: Optimism Goerli, Arbitrum Sepolia, Fantom Opera, Fantom Testnet
 
 2023-10:
 

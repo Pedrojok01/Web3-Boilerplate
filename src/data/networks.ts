@@ -2,7 +2,7 @@ import type { AddEthereumChainParameter } from "@web3-react/types";
 
 const infuraKey = process.env.REACT_APP_INFURA_KEY;
 const alchemyKey = infuraKey;
-const pocketNetwork = process.env.REACT_APP_POCKET_KEY;
+const groveAppId = process.env.REACT_APP_GROVE_APPID;
 
 const ETH: AddEthereumChainParameter["nativeCurrency"] = {
   name: "Ether",
@@ -81,7 +81,7 @@ export const CHAINS: {
     urls: [
       infuraKey ? `https://mainnet.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://eth-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
-      pocketNetwork ? `https://eth-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
+      groveAppId ? `https://eth-mainnet.rpc.grove.city/v1/${groveAppId}` : "",
       "https://rpc.ankr.com/eth",
       "https://cloudflare-eth.com"
     ].filter(Boolean),
@@ -95,7 +95,7 @@ export const CHAINS: {
     urls: [
       infuraKey ? `https://sepolia.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://eth-sepolia.g.alchemy.com/v2/${alchemyKey}` : "",
-      pocketNetwork ? `https://eth-sepolia.gateway.pokt.network/v1/lb/${pocketNetwork}` : ""
+      groveAppId ? `https://sepolia.rpc.grove.city/v1/${groveAppId}` : ""
     ].filter(Boolean),
     publicUrls: ["https://sepolia.infura.io/v3/", "https://rpc.sepolia.org"].filter(Boolean),
     name: "Sepolia",
@@ -158,7 +158,7 @@ export const CHAINS: {
     urls: [
       infuraKey ? `https://polygon-mainnet.infura.io/v3/${infuraKey}` : "",
       alchemyKey ? `https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}` : "",
-      pocketNetwork ? `https://poly-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
+      groveAppId ? `https://poly-mainnet.rpc.grove.city/v1/${groveAppId}` : "",
       "https://polygon-rpc.com"
     ].filter(Boolean),
     publicUrls: ["https://polygon-rpc.com"].filter(Boolean),
@@ -205,7 +205,7 @@ export const CHAINS: {
   250: {
     chainId: "250",
     urls: [
-      infuraKey ? `https://fantom-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
+      infuraKey ? `https://fantom-mainnet.rpc.grove.city/v1/${groveAppId}` : "",
       "https://rpc.ankr.com/fantom"
     ].filter(Boolean),
     publicUrls: ["https://rpc.ankr.com/fantom"].filter(Boolean),
@@ -225,7 +225,7 @@ export const CHAINS: {
   56: {
     chainId: "56",
     urls: [
-      pocketNetwork ? `https://bsc-mainnet.gateway.pokt.network/v1/lb/${pocketNetwork}` : "",
+      groveAppId ? `https://bsc-mainnet.rpc.grove.city/v1/${groveAppId}` : "",
       "https://bsc-dataseed.binance.org/",
       "https://rpc.ankr.com/bsc"
     ].filter(Boolean),
