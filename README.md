@@ -21,22 +21,22 @@
 - Upgrade all dependencies (still no switch to `ethers v6`, seems more and more unlikely that `@web3-react` will switch to ethers v6 anytime soon);
 - Fix Antd breaking changes;
 - Replaced `Ethereum goerli` (soon to be deprecated) by `Ethereum Sepolia` & `Arbitrum Goerli` by `Arbitrum Sepolia`;
-- Add `VerifySignature` contracts on: Optimism Goerli, Arbitrum Sepolia, Fantom Opera, Fantom Testnet
+- Add `VerifySignature` contracts on Optimism Goerli, Arbitrum Sepolia, Fantom Opera, Fantom Testnet
 
 2023-10:
 
-- Upgrade all packages dependencies (except ethers);
-- Improve useToken hook to fetch any ERC20 token balance/allowance/decimals/symbol;
+- Upgrade all package dependencies (except ethers);
+- Improve `useToken` hook to fetch any ERC20 token balance/allowance/decimals/symbol;
 - Fix minor responsive issues;
 
 2023-07:
 
-- Upgrade all packages dependencies;
+- Upgrade all package dependencies;
 - Add support for Wallet-Connect v2;
 - Clean code & folders structure;
 - Improve code readability.
 - Add dark mode support
-- Add support for: Optimism, Arbitrum, zkSync & Fantom networks
+- Add support for Optimism, Arbitrum, zkSync & Fantom networks
 
 ## Table of Contents
 
@@ -48,7 +48,7 @@
 - [Installation](#installation)
   - [Make sure you have the following ready:](#make-sure-you-have-the-following-ready)
   - [Once your config is ready, create a new repo, open your favorite code editor, and clone the repo with the following cmd:](#once-your-config-is-ready-create-a-new-repo-open-your-favorite-code-editor-and-clone-the-repo-with-the-following-cmd)
-  - [Install all package dependancies by running:](#install-all-package-dependancies-by-running)
+  - [Install all package dependencies by running:](#install-all-package-dependencies-by-running)
   - [Add your API keys in the .env file:](#add-your-api-keys-in-the-env-file)
   - [start the web3-boilerplate:](#start-the-web3-boilerplate)
 - [Features:](#features)
@@ -58,7 +58,7 @@
 ## Disclaimer
 
 1. Work in progress...
-2. No Typescript expert and no React expert either, so any contribution/improvement pull-request is welcomed!
+2. No Typescript expert and no React expert either, so any contribution/improvement pull request is welcomed!
 3. For a more "recent and high-level" web3 boilerplate built on [Next.js](https://nextjs.org/), [Wagmi](https://wagmi.sh/), [Viem](https://viem.sh/), and [ChakraUI](https://chakra-ui.com/), check out [Next-Web3-Boilerplate ](https://github.com/Pedrojok01/Next-Web3-Boilerplate)
 
 ## Description
@@ -80,8 +80,8 @@ Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplat
 
 ### Make sure you have the following ready:
 
-- [node.js](https://nodejs.org/) installed (developped on LTS v18)
-- [typescript](https://www.typescriptlang.org/) installed (developped on v5.2.2)
+- [node.js](https://nodejs.org/) installed (developed on LTS v18)
+- [typescript](https://www.typescriptlang.org/) installed (developed on v5.2.2)
 - [yarn](https://yarnpkg.com/) installed
 - [MetaMask](https://metamask.io/) (or any web3 compatible wallet) installed in your browser
 
@@ -91,13 +91,13 @@ Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplat
 git clone https://github.com/Pedrojok01/Web3-Boilerplate.git .
 ```
 
-### Install all package dependancies by running:
+### Install all package dependencies by running:
 
 ```bash
 yarn install
 ```
 
-<b>IMPORTANT: Double check your package.json to make sure you've installed the exact same version for all @web3-react packages. Since the version 8+ is still in beta, it may not be automatically installed.</b>
+<b>IMPORTANT: Double-check your package.json to make sure you've installed the exact same version for all @web3-react packages. Since the version 8+ is still in beta, it may not be automatically installed.</b>
 
 ### Add your API keys in the .env file:
 
