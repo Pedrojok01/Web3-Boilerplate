@@ -3,7 +3,6 @@ import { FC } from "react";
 import { Layout, Typography } from "antd";
 
 const { Footer } = Layout;
-const { Text } = Typography;
 
 const styles = {
   footer: {
@@ -19,13 +18,6 @@ const CustomFooter: FC = () => {
   return (
     <Footer style={styles.footer}>
       <Typography>
-        <Text>
-          Leave a ⭐️ on this{" "}
-          <a href="https://github.com/Pedrojok01/Web3-Boilerplate" target="_blank" rel="noopener noreferrer">
-            boilerplate
-          </a>{" "}
-          if you like it!
-        </Text>
       </Typography>
     </Footer>
   );
