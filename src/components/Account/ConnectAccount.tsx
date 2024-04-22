@@ -61,7 +61,7 @@ const ConnectAccount: React.FC<WantedChain> = () => {
       connector.resetState();
     }
     // @ts-expect-error close can be returned by wallet
-    if (connector && connector.close) {
+    if (connector?.close) {
       // @ts-expect-error close can be returned by wallet
       await connector.close();
     }
