@@ -28,7 +28,7 @@ const DisconnectModal: React.FC<ConnectModalProps> = ({ isModalOpen, setIsModalO
           marginTop: "10px",
           borderRadius: "10px"
         }}
-        bodyStyle={{ padding: "15px" }}
+        styles={{ body: { padding: "15px" } }}
       >
         <Address avatar="left" size={6} copyable style={{ fontSize: "20px" }} />
         <div style={{ marginTop: "10px", padding: "0 10px" }}>
