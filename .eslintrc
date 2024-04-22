@@ -1,8 +1,5 @@
 {
   "settings": {
-    "react": {
-      "version": "detect"
-    },
     "import/parsers": {
       "@typescript-eslint/parser": [
         ".ts",
@@ -22,13 +19,14 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "react",
     "react-hooks",
     "import",
     "@typescript-eslint",
     "prettier"
   ],
   "extends": [
+    "react-app",
+    "react-app/jest",
     "eslint:recommended",
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
