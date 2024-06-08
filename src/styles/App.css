@@ -67,6 +67,14 @@ body {
   font-weight: 500 !important;
 }
 
+.ant-modal-mask {
+  z-index: 49 !important;
+}
+
+.ant-modal-wrap {
+  z-index: 50 !important;
+}
+
 .ant-modal {
   display: flex;
   width: 70vw;

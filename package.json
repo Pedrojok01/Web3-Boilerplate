@@ -1,6 +1,7 @@
 {
   "name": "web3-boilerplate",
-  "version": "0.2.1",
+  "description": "Clean Web3 Boilerplate using the latest stack out there: Typescript ^5, react ^18 (including react-scrits ^5), and @web3-react/core v8. Enjoy!",
+  "version": "0.2.2",
   "author": "Pedrojok01 <pedrojok@pm.me>",
   "scripts": {
     "start": "react-scripts start",
@@ -11,9 +12,9 @@
     "prettier": "prettier --config .prettierrc \"**/*.{ts,tsx,js}\" --write"
   },
   "dependencies": {
-    "@ant-design/icons": "5.3.6",
+    "@ant-design/icons": "5.3.7",
     "@coinbase/wallet-sdk": "3.7.2",
-    "@walletconnect/ethereum-provider": "2.12.2",
+    "@walletconnect/ethereum-provider": "2.13.1",
     "@web3-react/coinbase-wallet": "8.2.3",
     "@web3-react/core": "8.2.3",
     "@web3-react/metamask": "8.2.4",
@@ -21,11 +22,11 @@
     "@web3-react/types": "8.2.3",
     "@web3-react/url": "8.2.3",
     "@web3-react/walletconnect-v2": "8.5.1",
-    "antd": "5.16.4",
+    "antd": "5.18.0",
     "buffer": "6.0.3",
     "ethers": "5.7.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-jazzicon": "1.0.4",
     "react-scripts": "5.0.1",
     "swr": "2.2.5"
@@ -33,21 +34,20 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@types/jest": "29.5.12",
-    "@types/node": "20.12.7",
-    "@types/react": "18.2.79",
-    "@types/react-dom": "18.2.25",
+    "@types/node": "20.14.2",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "6.16.0",
     "@typescript-eslint/parser": "6.16.0",
-    "dotenv": "16.4.5",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-prettier": "5.1.3",
-    "eslint-plugin-react": "7.34.1",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "prettier": "3.2.5",
+    "eslint-plugin-react": "7.34.2",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "prettier": "3.3.1",
     "typescript": "5.4.5"
   },
   "eslintConfig": {
