@@ -65,7 +65,7 @@
 
 Simple and minimalist Web3 boilerplate to boost your Dapp development. Don't waste time setting up CRA, Typescript, react-script v5 polyfill, and connecting metamask and other wallets any longer. Instead, get this web3-boilerplate and start coding right away with the latest stack available out there!
 
-Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplate.netlify.app/)
+No live demo anymore: [web3-boilerplate.pedrojok.com](https://web3-boilerplate.pedrojok.com/) now runs its successor, [Next-Web3-Boilerplate](https://github.com/Pedrojok01/Next-Web3-Boilerplate).
 
 ## Built With
 
